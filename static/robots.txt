@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin
+Disallow: /admin/
+
+User-agent: *
+Allow: /
+Allow: /cdmx
+Allow: /edomex
+Allow: /morelos
+Allow: /guerrero
+Allow: /chiapas
+
+Sitemap: https://gestoriavehicularjc.com/sitemap.xml

@@ -1,0 +1,74 @@
+/* Tamaño del hero con el brand */
+#title {
+    min-height: 100vh;
+}
+
+.hero-page {
+    background: linear-gradient(to bottom, #112d4e, #19477C);
+    color: #F9F7F7;
+}
+
+.resaltar-estados {
+    font-weight: bold;
+    /* color: #FFB738; */
+}
+
+/* ESTILO DE LOS BOTONES */
+.btn-contacto {
+    background-color: #FFB738;
+    color: black;
+    transition: all 0.1s linear;
+}
+
+.btn-contacto:hover {
+    background-color: #FFAB16;
+}
+
+.btn-maps{
+    border-color: #FFB738;
+    color: #FFB738;
+    transition: all 0.1s linear;
+}
+
+.btn-maps:hover {
+    color: black;
+    background-color: #DBE2EF;
+}
+
+/* INTERACCIÓN CON LOS BOTONES */
+.btn-primario {
+    color: white;
+    background-color: #112d4e;
+    transition: scale 0.1s linear;
+}
+
+.btn-primario:hover {
+    color: white;
+    background-color: #112d4e;
+    scale: 1.1;
+}
+
+/* ESTILO PARA LOS SERVICIOS EN LA SECCIÓN DE SERVICIOS */
+.descripcion-servicio, titulo-servicio {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* ESTILO EN LA SECCIÓN NOSOTROS */
+#about > div.text-center {
+    background-color: #112d4e;
+}
+
+/* RESPONSIVE PARA DISPOSITIVOS PEQUEÑOS */
+@media (max-width: 992px) {
+    #title {
+        height: auto;
+    }
+
+    #contenedor-formulario {
+        border: none!important;
+        box-shadow: none!important;
+    }
+}

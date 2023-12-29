@@ -1,0 +1,71 @@
+<footer>
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 py-5 mt-5">
+    <div class="col mb-3">
+      <a href="{{ url_for('home') }}" class="fs-2 d-flex align-items-center mb-3" style="color: #F9F7F7;">
+        <i class="bi bi-folder flex-shrink-0 footer-icon"></i>
+      </a>
+      <p class="footer-content copyright"></p>
+      <div class="d-flex gap-3">
+        <a href="#" class="nav-link fs-4 footer-icon"><i class="bi bi-facebook"></i></a>
+        <a href="https://wa.me/send?text=Hola&tel=5510494689" class="nav-link fs-4 footer-icon"><i class="bi bi-whatsapp"></i></a>
+        <a href="mailto:gestorvehicularjc@gmail.com" class="nav-link fs-4 footer-icon"><i class="bi bi-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="col ms-auto mb-3" style="max-width: 10px;"></div>
+
+    <div class="col mb-3">
+      <h5>Interés</h5>
+      <ul class="nav flex-column footer-content">
+        <li class="nav-item mb-2"><a href="{{ url_for('home') }}" class="nav-link p-0">Inicio</a></li>
+        <li class="nav-item mb-2"><a href="{{ url_for('nosotros') }}" class="nav-link p-0">Nosotros</a></li>
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <h5>Servicios</h5>
+      <ul class="nav flex-column footer-content">
+        <li class="nav-item mb-2"><a href="{{ url_for('current_estado', estado='cdmx') }}" class="nav-link p-0">CMDX</a></li>
+        <li class="nav-item mb-2"><a href="{{ url_for('current_estado', estado='edomex') }}" class="nav-link p-0">EDOMEX</a></li>
+        <li class="nav-item mb-2"><a href="{{ url_for('current_estado', estado='morelos') }}" class="nav-link p-0">Morelos</a></li>
+        <li class="nav-item mb-2"><a href="{{ url_for('current_estado', estado='guerrero') }}" class="nav-link p-0">Guerrero</a></li>
+        <li class="nav-item mb-2"><a href="{{ url_for('current_estado', estado='chiapas') }}" class="nav-link p-0">Chiapas</a></li>
+      </ul>
+    </div>
+
+    <div class="col mb-3" style="min-width: 280px;">
+      <h5>Contacto</h5>
+      <ul class="nav flex-column footer-content">
+        <li class="d-flex gap-2 mb-2">
+          <a href="https://wa.me/send?text=Hola&tel=5510494689" class="nav-link p-0"><i class="bi bi-whatsapp me-2"></i>55 4996 3965</a>
+          <i role="button" class="bi bi-copy" onclick="copiarContenido('55 4996 3965')"></i>
+        </li>
+        <li class="d-flex gap-2 mb-2">
+          <a href="mailto:gestorvehicularjc@gmail.com" class="nav-link p-0"><i class="bi bi-envelope-fill me-2"></i>gestorvehicularjc@gmail.com</a>
+          <i role="button" class="bi bi-copy" onclick="copiarContenido('gestoriavehicular@gmail.com')"></i>
+        </li>
+        <li class="mb-2">
+          <a href="https://maps.app.goo.gl/chyY2qn3DK6WrQek6" class="nav-link p-0"><i class="bi bi-geo-alt-fill me-2"></i>Encuéntranos aquí</a>
+        </li>
+        <li class="mb-2 d-flex"><i class="bi bi-calendar-week-fill me-2"></i><p>Lunes-Viernes <br>10:00am - 5:00p</p></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</footer>
+
+<!-- Fecha actualizada de copyright -->
+<script type="text/javascript">
+  document.querySelector("p.copyright").textContent = "© 2023-" + new Date().getFullYear();
+
+  // Copiar los el número de teléfono y el correo
+  const copiarContenido = async(texto) => {
+    try {
+      await navigator.clipboard.writeText(texto);
+      console.log("El texto se ha copiado");
+    } catch (err) {
+      console.log("Error al copiar", err);
+    }
+  }
+</script>

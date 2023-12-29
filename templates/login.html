@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{# ########## TITULO DE LA PAGINA ########## #}
+{% block title %}Login{% endblock %}}
+
+{# ########## PARA LA BÚSQUEDA SEO ########## #}
+{% block head %}
+<style>
+  main {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form {
+    width: 400px;
+  }
+
+  form > * {
+    width: 100%;
+  }
+</style>
+{% endblock %}
+
+{# ########## CONTENIDO PRINCIPAL ########## #}
+{% block content %}
+
+<form method="POST">
+  {{ form.csrf_token }}
+  <h1 class="text-center"><i class="bi bi-folder"></i></h1>
+  <h2 class="fw-bold">Ingresar administrador</h2>
+  <div class="my-3 form-floating">
+    {{ form.password(**{'class': 'form-control'}) }}
+    {{ form.password.label }}
+  </div>
+
+  {{ form.submit(**{'class': 'btn btn-dark py-2'}) }}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <p class="fw-bold text-danger mt-2">{{ messages[0] }}</p>
+    {% endif %}
+  {% endwith %}
+</form>
+
+{% endblock %}

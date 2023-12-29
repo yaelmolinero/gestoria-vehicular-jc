@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+main div.container > * {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    padding-top: 100px;
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+}
+
+.compartir {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    border-radius: 50%;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    transition: all 0.1s linear;
+}
+
+.compartir:hover {
+    background-color: #112d4e;
+    color: white;
+    scale: 1.1;
+}
+
+.compartir > .bi {
+    width: 30px;
+    height: 30px;
+    font-size: inherit;
+}
+
+@media (min-width: 992px) {
+    aside {
+        position: sticky;
+        top: 70px;
+        height: fit-content;
+    }
+}
+
+/* Botón editar */
+.btn-primario {
+    color: white;
+    background-color: #112d4e;
+    transition: scale 0.1s linear;
+}
+
+.btn-primario:hover {
+    color: white;
+    background-color: #112d4e;
+}
+
+.admin {
+    transition: all 0.1s linear;
+}
+
+.admin:hover {
+    scale: 1.1;
+}

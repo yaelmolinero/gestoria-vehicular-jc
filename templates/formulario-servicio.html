@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% macro render_field(field) %}
+  <div class="mb-3">
+    {{ field.label(**{'class': 'fw-bold'}) }}
+    {{ field(**kwargs) }}
+  </div>
+{% endmacro %}
+
+{# ########## TITULO DE LA PAGINA ########## #}
+{% block title %}Agregar Nuevo Servicio{% endblock %}
+
+{# ########## ESTILO ADICIONAL ########## #}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form-service.css') }}">
+{% endblock %}
+
+{# ########## FORMULARIO ########## #}
+{% block content %}
+  <form class="container" method="POST">
+    {{ form.csrf_token }}
+    <!-- NOMBRE DEL SERVICIO -->
+    {{ render_field(form.nombre, **{'class': 'form-control', 'placeholder': 'Bajas y Altas, Placas Federales, otro...'}) }}
+    <!-- ESTADO Y ESCRIBIR ICONO-->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        {{ render_field(form.estado, **{'class': 'form-control'}) }}
+      </div>
+      <div class="col-md-6">
+        {{ form.icon.label(**{'class': 'fw-bold'}) }}
+        <div class="input-group">
+          {{ form.icon(placeholder='ejemplo: facebook', **{'class': 'form-control'}) }}
+          <span class="input-group-text"><i class="bi icon-code" id="icono" style="width: 20px"></i></span>
+        </div>
+        <span class="form-text">Los iconos los consigues aquí: <a href="https://icons.getbootstrap.com/" target="_blank">Iconos</a></span>
+      </div>
+    </div>
+    <!-- DESCRIPCIÓN -->
+    {{ render_field(form.descripcion, **{'class': 'form-control', 'maxlength': '230', 'placeholder': 'Gestoría Vehicular para bajas y altas en el estado...'}) }}
+    <!-- REQUISITOS -->
+    <div class="mb-3">
+      {{ form.requisitos.label(**{'class': 'fw-bold'}) }}
+      {{ form.requisitos }}
+    </div>
+    <!-- AGREGAR PREGUNTAS -->
+    <div class="container container-preguntas">
+      <h2 class="fw-bold">Preguntas Frecuentes (opcionales)</h2>
+      <div class="accordion accordion-flush" id="acordeonPreguntas">
+        <!------- PREGUNTA 1 ------->
+        <div class="accordion-item pregunta1 ">
+          <h2 class="accordion-header d-flex">
+            <button class="accordion-button collapsed" id="pregunta-1" type="button" data-bs-target="#r1" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="r1">Pregunta 1</button>
+            <button class="edit btn ms-auto hide-element" type="button"><i class="bi bi-pencil"></i></button>
+            <input class="form-check-input select" name="usar1" type="checkbox">
+          </h2>
+          <div class="accordion-collapse collapse" id="r1" data-bs-parent="acordeonPreguntas">
+            <div class="accordion-body">
+              {{ form.respuesta1 }}
+            </div>
+          </div>
+        </div>
+        <!------- PREGUNTA 2 ------->
+        <div class="accordion-item pregunta2">
+          <h2 class="accordion-header d-flex">
+            <button class="accordion-button collapsed" id="pregunta-2" type="button" data-bs-target="#r2" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="r2">Pregunta 2</button>
+            <button class="edit btn hide-element" type="button"><i class="bi bi-pencil"></i></button>
+            <input class="form-check-input select" name="usar2" type="checkbox">
+          </h2>
+          <div class="accordion-collapse collapse" id="r2" data-bs-parent="acordeonPreguntas">
+            <div class="accordion-body">
+              {{ form.respuesta2 }}
+            </div>
+          </div>
+        </div>
+        <!------- PREGUNTA 3 ------->
+        <div class="accordion-item pregunta3">
+          <h2 class="accordion-header d-flex">
+            <button class="accordion-button collapsed" id="pregunta-3" type="button" data-bs-target="#r3" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="r3">Pregunta 3</button>
+            <button class="edit btn hide-element" type="button"><i class="bi bi-pencil"></i></button>
+            <input class="form-check-input select" name="usar3" type="checkbox">
+          </h2>
+          <div class="accordion-collapse collapse" id="r3" data-bs-parent="acordeonPreguntas">
+            <div class="accordion-body">
+              {{ form.respuesta3 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: none;">
+        {{ form.pregunta1(**{'hidden': 'true'}) }}
+        {{ form.pregunta2(**{'hidden': 'true'}) }}
+        {{ form.pregunta3(**{'hidden': 'true'}) }}
+      </div>
+    </div>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='requisitos') }}
+    {{ ckeditor.config(name='respuesta1') }}
+    {{ ckeditor.config(name='respuesta2') }}
+    {{ ckeditor.config(name='respuesta3') }}
+
+    {{ form.submit(**{'class': 'btn btn-dark'}) }}
+    <a class="ms-2 btn btn-secondary" href="{{ url_for('home') }}">Cancelar</a>
+  </form>
+
+<script src="{{ url_for('static', filename='js/formulario_servicio.js') }}"></script>
+{% if editar_servicio %}
+  <script>
+    let n = 1;
+    document.querySelectorAll(".accordion-button").forEach(button => {
+      let preguntaN = document.getElementById(`pregunta${n}`);
+      if (preguntaN.value) {
+        button.textContent = preguntaN.value;
+        document.querySelector(`input[name="usar${n}"]`).checked = 1;
+      }
+      ++n;
+    });
+
+    document.querySelectorAll("input.select").forEach(element => {
+      if (element.checked)
+        element.previousElementSibling.classList.remove("hide-element");
+       else
+        element.previousElementSibling.classList.add("hide-element");
+    });
+
+    document.getElementById("icono").classList.remove("icon-code")
+    var iconCode = "bi-{{ form.icon.data }}";
+    document.getElementById("icono").classList.add(iconCode)
+  </script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,111 @@
+/* NAVBAR */
+#navigation {
+    background-color: #112D4E;
+}
+
+ul#navigation-list a.nav-link, a.navbar-brand {
+    color: #F9F7F7;
+}
+
+ul#navigation-list a.nav-link:hover {
+    color: #FFB738;
+}
+
+a.navbar-brand:hover {
+    color: #F9F7F7;
+    /* color: #FFB738; <- color amarillo de contraste */
+}
+
+/* PARA MOSTRAR LOS ESTADOS CUANDO EL MOUSE PASA POR ENCIMA */
+@media (min-width: 993px) {
+    .lista-servicios {
+        display: none;
+        position: absolute;
+        top: 100%;
+    }
+
+    .contenedor-servicios:hover .lista-servicios {
+        display: block;
+    }
+
+    .link-estado::after {
+        display: inline-block;
+        margin-left: 0.255em;
+        vertical-align: 0.255em;
+        content: "";
+        border-top: 0.3em solid;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0;
+        border-left: 0.3em solid transparent;
+    }
+
+    ul.dropdown-menu {
+        width: 220px;
+    }
+
+    .dropdown-item {
+        width: auto;
+        text-wrap: wrap;
+    }
+
+    .dropdown-item:hover {
+        /*background-color: #2569B8; */ /* Color azul */
+        background-color: #FFB738; /* Color amarillo */
+        color: white;
+    }
+}
+
+/* CAMBIAMOS LA BARRA DE NAVEGACIÓN POR UN MENU LATERAL */
+@media (max-width: 992px) {
+    /*.offcanvas {
+        background-color: #202020;
+        color: white;
+    } */
+
+    ul#navigation-list a.nav-link { color: black !important; }
+
+    .dropdown-toggle-split {
+        padding-left: 10px;
+    }
+
+    .dropdown-menu {
+        /*background-color: #202020;*/
+        width: 100%;
+        border: 0;
+    }
+    .dropdown-item {
+        /*color: #F9F7F7;*/
+        color: black;
+    }
+
+    .btn-group{
+        display: block;
+    }
+    .btn-group > a {
+        display: inline-block;
+    }
+}
+
+/* FIN PARA NAVBAR */
+
+/* FOOTER */
+footer {
+    background-color: #181818;
+    color: white;
+}
+
+.footer-content, .footer-content > li > a {
+    color: #DEE2ED;
+    opacity: .75;
+}
+
+.footer-icon:hover {
+    color: #112d4e;
+}
+
+/* Copiar información en el footer */
+.bi-copy:hover {
+    color: var(--bs-nav-link-hover-color);
+}
+
+/* FIN PARA EL FOOTER */

@@ -1,0 +1,20 @@
+{% macro render_servicios(todos_los_servicios) %}
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    {% for servicio in todos_los_servicios %}
+      <div class="col d-flex align-items-start">
+        <h3>
+          <a href="{{ url_for('current_servicio', estado=servicio.estado, nombre='-'.join(servicio.nombre.split(' '))) }}" class="link-body-emphasis">
+            <i class="bi {{ servicio.icon }} flex-shrink-0 me-3"></i>
+          </a>
+        </h3>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 titulo-servicio">
+            <a href="{{ url_for('current_servicio', estado=servicio.estado, nombre='-'.join(servicio.nombre.split(' '))) }}"
+               class="link-body-emphasis link-underline-opacity-0">{{ servicio.nombre }}</a>
+          </h3>
+          <p class="descripcion-servicio">{{ servicio.descripcion }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}

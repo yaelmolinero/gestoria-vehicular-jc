@@ -1,0 +1,131 @@
+{% set current_user = '' | check_admin %}
+
+<nav class="navbar navbar-expand-lg fixed-top" id="navigation" aria-label="Offcanvas navbar large">
+  <div class="container">
+    <!-- NOMBRE, LOGO Y BOTÓN PARA LA BARRA LATERAL -->
+    <a class="navbar-brand fs-4 fw-bold" href="{{ url_for('home') }}" title="Inicio"><i class="bi bi-folder flex-shrink-0 me-3"></i>Gestoría Vehicular JC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+            aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- ITEMS DE NAVEGACIÓN/SIDEBAR -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+      <!-- HEADER DE LA BARRA LATERAL -->
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbar2Label"><i class="bi bi-folder flex-shirk-0 me-2"></i>Gestoría JC</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <!-- OPCIONES DE NAVEGACIÓN -->
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navigation-list">
+          <li class="nav-item">
+            <a href="#about" class="nav-link" id="nosotros" title="Sobre nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item dropdown btn-group contenedor-servicios">
+            <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='cdmx') }}">CDMX</a>
+            <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu lista-servicios">
+              {% for servicio in ("cdmx" | get_servicios) %}
+                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+                <li>
+                  <a class="dropdown-item d-flex gap-2 align-items-center"
+                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+                    <i class="bi {{ servicio.icon }}"></i>
+                    {{ servicio.nombre }}
+                  </a>
+                </li>
+              {% endfor %}
+              {% if current_user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown btn-group contenedor-servicios">
+            <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='edomex') }}">EDOMEX</a>
+            <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu lista-servicios">
+              {% for servicio in ('edomex' | get_servicios) %}
+                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+                <li>
+                  <a class="dropdown-item d-flex gap-2 align-items-center"
+                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+                    <i class="bi {{ servicio.icon }}"></i>
+                    {{ servicio.nombre }}
+                  </a>
+                </li>
+              {% endfor %}
+              {% if current_user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown btn-group contenedor-servicios">
+            <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='morelos') }}">Morelos</a>
+            <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu lista-servicios">
+              {% for servicio in ('morelos' | get_servicios) %}
+                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+                <li>
+                  <a class="dropdown-item d-flex gap-2 align-items-center"
+                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+                    <i class="bi {{ servicio.icon }}"></i>
+                    {{ servicio.nombre }}
+                  </a>
+                </li>
+              {% endfor %}
+              {% if current_user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown btn-group contenedor-servicios">
+            <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='guerrero') }}">Guerrero</a>
+            <a class="tt d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu lista-servicios">
+              {% for servicio in ('guerrero' | get_servicios) %}
+                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+                <li>
+                  <a class="dropdown-item d-flex gap-2 align-items-center"
+                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+                    <i class="bi {{ servicio.icon }}"></i>
+                    {{ servicio.nombre }}
+                  </a>
+                </li>
+              {% endfor %}
+              {% if current_user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown btn-group contenedor-servicios">
+            <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='chiapas') }}">Chiapas</a>
+            <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu lista-servicios">
+              {% for servicio in ('chiapas' | get_servicios) %}
+                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+                <li>
+                  <a class="dropdown-item d-flex gap-2 align-items-center"
+                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+                    <i class="bi {{ servicio.icon }}"></i>
+                    {{ servicio.nombre }}
+                  </a>
+                </li>
+              {% endfor %}
+              {% if current_user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link" id="contacto-nav" title="Formulario de contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

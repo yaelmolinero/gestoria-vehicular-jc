@@ -1,0 +1,127 @@
+{% from "estados/servicios.html" import render_servicios %}
+{% extends "base.html" %}
+
+{# ########## TITULO DE LA PAGINA ########## #}
+{% block title %}Gestoría Vehicular para Ciudad de México{% endblock %}
+
+{# ########## PARA LA BÚSQUEDA SEO ########## #}
+{% block head %}
+<meta name="description" content="Gestoría Vehicular para la Ciudad de México. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.">
+<meta name="keywords" content="gestoria vehicular para la ciudad de mexico, gestoria vehicular cdmx,
+gestoria cdmx, placas para motos cdmx, tramites vehiculares cdmx, verificacion cdmx, gestor de placas cdmx, placas cdmx,
+altas vehiculares cdmx, verificacion vehicular cdmx">
+
+<meta property="og:title" content="Servicios de Gestoría Vehicular para la Ciudad de México.">
+<meta property="og:description" content="Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificacion, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!">
+<meta property="og:image" content="{{ url_for('static', filename='img/placas/cdmx_placas.png') }}">
+<meta property="og:image:alt" content="placas de la ciudad de mexico">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/hero-servicios.css') }}">
+
+{% endblock %}
+
+{# ########## CONTENIDO PRINCIPAL ########## #}
+{% block content %}
+<!---------- HERO ---------->
+<section class="d-flex flex-column hero-page" id="title">
+  <!----- HERO ----->
+  <div class="container py-5 d-flex align-items-center" style="min-height: 80vh;">
+    <div class="row flex-lg-row-reverse align-items-center gy-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{ url_for('static', filename='/img/hero_img/cdmx_hero.png') }}" class="d-block mx-lg-auto img-fluid"
+             alt="placas y logo de la ciudad de mexico" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold white-body-emphasis lh-1 mb-3">Gestoría Vehicular para Ciudad de México</h1>
+        <p class="lead">Te facilitamos y guiamos en los trámites vehiculares para la
+          <span class="resaltar-estados">Ciudad de México</span>.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          {% include "partials/hero-buttons.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!----- BRAND ----->
+  <div class="d-flex align-items-center justify-content-center py-4 text-center text-dark" style="background-color: #fff; min-height: 20vh;">
+    <h2 class="display-5 fw-bold">Encuentra la solución que buscas. <br>
+      <a href="#services" class="text-body-secondary"><i class="bi bi-chevron-double-down flex-shrink-0"></i></a>
+    </h2>
+  </div>
+</section>
+
+<!--------- SERVICIOS --------->
+<section id="services">
+  <div class="container px-4" id="icon-grid">
+    <h2 class="fw-bold mt-4">Servicios</h2>
+    <!----- INFO DE LOS SERVICIOS ----->
+    <div class="tab-pane fade show active" id="cdmx-tab-pane" role="tabpanel" aria-labelledby="cdmx-tab" tabindex="0">
+      {{ render_servicios('cdmx' | get_servicios) }}
+    </div>
+  </div>
+</section>
+
+<!---------- ABOUT & EXPERIENCE ---------->
+{% include "partials/experiencia.html" %}
+
+<!--------- CONTACT & MAPS --------->
+{% include "partials/contact.html" %}
+
+<!---------- Q&A ---------->
+<section id="frequent-questions">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Preguntas frecuentes</h2>
+    <div class="accordion accordion-flush" id="contenedorPreguntas">
+      <!-- PREGUNTA 1 -->
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+            ¿Cuánto tiempo tardan en completar mis trámites?
+          </button>
+        </h3>
+        <div id="flush-collapse1" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+          <div class="accordion-body">
+            <p>El tiempo que demora tener el trámite listo es de 5 a 10 días hábiles desde que entrega los requisitos, el tiempo puede variar dependiendo del tipo de trámite que quiera realizar.</p>
+          </div>
+        </div>
+      </div>
+      <!-- PREGUNTA 2 -->
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+            ¿Cuáles son los documentos necesarios para realizar trámites vehiculares?
+          </button>
+        </h3>
+        <div id="flush-collapse2" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+          <div class="accordion-body">
+            <p>Los documentos necesarios pueden variar según el tipo de trámite, pero en general, algunos documentos comunes incluyen:</p>
+            <ul>
+              <li>Identificación oficial del propietario</li>
+              <li>Comprobante de domicilio</li>
+              <li>Factura original del vehiculo</li>
+              <li>Comprobante de pago de tenencia y verificación</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- PREGUNTA 3  -->
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
+            ¿Cómo puedo realizar trámites vehiculares de la Ciudad de Mexico desde EDOMEX?
+          </button>
+        </h3>
+        <div id="flush-collapse3" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+          <div class="accordion-body">
+            <p>Para obtener más información, lo mejor es ponerse en <a href="#" style="color: #ffb738; text-decoration: none;">contacto</a>
+              vía WhatspApp, donde les enviaremos los costos, requisitos e instrucciones para llevar a cabo el trámite.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

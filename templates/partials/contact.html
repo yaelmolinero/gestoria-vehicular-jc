@@ -1,0 +1,57 @@
+<section id="contacto">
+  <div class="container py-5">
+    <h2 class="fw-bold">Contacto</h2>
+    <div class="d-flex wrap gap-3 align-items-center">
+      <!----- CONTACT INFO ----->
+      <a href="#" class="nav-link text-body-secondary m-0"><i class="bi bi-whatsapp me-2"></i>55 4996 3965</a>
+      <i role="button" class="bi bi-copy me-4" onclick="copiarContenido('55 4996 3965')"></i>
+      <a href="#" class="nav-link text-body-secondary m-0"><i class="bi bi-envelope-fill me-2"></i>gestorvehicular@gmail.com</a>
+      <i role="button" class="bi bi-copy" onclick="copiarContenido('gestoriavehicular@gmail.com')"></i>
+
+    </div>
+    <div class="row my-4 p-lg-4 border rounded-3 shadow-lg" id="contenedor-formulario">
+      <!----- CONTACT FORM ----->
+      <form class="col-lg-6 my-lg-0 py-4 py-lg-0 pe-lg-5" action="{{ url_for('send_mail', current_page=estado) }}" method="POST">
+        <!-- NOMBRE DEL USUARIO -->
+        <div class="mb-2">
+          <label for="name" class="form-label">Nombre: <span style="color: #ffb738;">*</span></label>
+          <input type="text" name="name" id="name" class="form-control" required>
+          <div class="invalid-feedback">Ingresa un nombre.</div>
+        </div>
+        <!-- CORREO DEL USUARIO -->
+        <div class="mb-2">
+          <label for="email" class="form-label">Correo: <span style="color: #ffb738;">*</span></label>
+          <input type="email" name="email" id="email" class="form-control" required>
+          <div class="invalid-feedback">Ingresa una dirección de correo válida.</div>
+        </div>
+        <!-- TELÉFONO DEL USUARIO -->
+        <div class="mb-2">
+          <label for="phone" class="form-label">Numero de teléfono:</label>
+          <input type="tel" name="phone" id="phone" class="form-control">
+        </div>
+        <!-- ASUNTO DEL MENSAJE -->
+        <div class="mb-2">
+          <label for="asunto" class="form-label">Asunto: <span style="color: #ffb738;">*</span></label>
+          <input type="text" name="asunto" id="asunto" class="form-control" required>
+          <div class="invalid-feedback">Ingresa un asunto.</div>
+        </div>
+        <!-- MENSAJE DEL USUARIO -->
+        <div class="mb-4">
+          <label for="message" class="form-label">Mensaje: <span style="color: #ffb738;">*</span></label>
+          <textarea name="message" id="message" class="form-control" rows="3" required></textarea>
+          <div class="invalid-feedback">Por favor escriba la duda.</div>
+        </div>
+        <!-- ENVIAR FORMULARIO -->
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-dark">Enviar</button>
+        </div>
+      </form>
+      <!----- MAPS ----->
+      <div class="col-lg-6 my-2 my-lg-0">
+<!--        <div style="background-color: #112d4e; width: 100%; height: 450px;"></div>-->
+        <iframe width="100%" height="500" style="border:0" Loading="lazy" allowfullscreen
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJYxCNbHb40YUR9s1Fdr8kGJk&key={{ 'API_KEY' | get_api_key }}"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,225 @@
+{% from "estados/servicios.html" import render_servicios %}
+{% extends "base.html" %}
+
+{# ########## TITULO DE LA PAGINA ########## #}
+{% block title %}Servicios de Gestoría Vehicular{% endblock %}
+
+{# ########## PARA LA BÚSQUEDA SEO ########## #}
+{% block head %}
+<meta name="description" content="Gestoría Vehicular para la Ciudad de México, Estado de México, Morelos, Guerrero y Chiapas desde Estado de México.">
+<meta name="keywords" content="gestoria vehicular, gestoria vehicular en edomex, gestoria vehicular en cdmx, gestoria vehicular en morelos, gestoria vehicular en guerrero, gestoria vehicular en chiapas, placas edomex, placas cdmx, placas para motos, tramites vehiculares, reemplacamiento, reemplacamiento edomex, reemplacamiento cdmx, gestor vehicular, gestor de placas, placas para carros">
+
+<meta property="og:title" content="Servicios de Gestoría Vehicular para CDMX, EDOMEX, Morelos, Chiapas y Guerrero">
+<meta property="og:description" content="Una gestoría eficiente y de confianza donde te podemos ayudar con tus tramites vehiculares como Altas y Bajas, Cambio de Entidad, Cambios de Propietario, Placas Federales, entre otros.">
+<meta property="og:image" content="{{ url_for('static', filename='/img/hero_img/home_ilustracion.png') }}">
+<meta property="og:image:alt" content="personas trabajando en equipo">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/hero-servicios.css') }}">
+{% endblock %}
+
+{# ########## CONTENIDO PRINCIPAL ########## #}
+{% block content %}
+    <!---------- TITLE ---------->
+    <section class="d-flex flex-column hero-page" id="title">
+      <!----- HERO ----->
+      <div class="container py-5 d-flex align-items-center" style="min-height: 80vh;">
+        <div class="row flex-lg-row-reverse align-items-center gy-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ url_for('static', filename='img/hero_img/home_ilustracion.png') }}" class="d-block mx-lg-auto img-fluid" alt="personas trabajando en equipo" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold white-body-emphasis lh-1 mb-3">Gestoría Vehicular</h1>
+            <p class="lead">Gestionamos trámites, altas en transporte federal, placas y permisos federales de diferentes estados como
+              <span class="resaltar-estados">CDMX, EDOMEX, Morelos, Guerrero y Chiapas</span>.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              {% include "partials/hero-buttons.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----- BRAND ----->
+      <section class="py-4 border-bottom" style="background-color: white; min-height: 20vh;">
+        <div class="container">
+          <div class="row align-items-center justify-content-center justify-content-lg-between brand gap-1">
+            <!-- CDMX LOGO -->
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='img/logos/cdmx_logo.png') }}" class="img-fluid" alt="ciudad de mexico logo">
+              </div>
+            </div>
+            <!-- EDOMEX LOGO -->
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='img/logos/edomex_logo.png') }}" class="img-fluid" alt="estado de mexico logo">
+              </div>
+            </div>
+            <!-- GUERRERO LOGO -->
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='img/logos/guerrero_logo.png') }}" class="img-fluid" alt="guerrero logo">
+              </div>
+            </div>
+            <!-- CHIAPAS LOGO -->
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='img/logos/chiapas_logo.png') }}" class="img-fluid" alt="chiapas logo">
+              </div>
+            </div>
+            <!-- MORELOS LOGO -->
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="mb-4 mb-md-0">
+                <img src="{{ url_for('static', filename='img/logos/morelos_logo.png') }}" class="img-fluid" alt="morelos logo">
+              </div>
+            </div>
+          </div> <!-- / .row -->
+        </div> <!-- / .container -->
+      </section>
+    </section>
+
+    <!---------- SERVICIOS ---------->
+    <section id="services">
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="fw-bold mb-4">Servicios</h2>
+        <!----- TABS ESTRUCTURA ----->
+        <ul class="nav nav-tabs d-flex justify-content-evenly justify-content-lg-start" id="myTab" role="tablist">
+          <!-- CDMX TAB -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-body-emphasis active" id="cdmx-tab" data-bs-toggle="tab" data-bs-target="#cdmx-tab-pane" type="button" role="tab" aria-controls="cdmx-tab-pane" aria-selected="true">CDMX</button>
+          </li>
+          <!-- EDOMEX TAB -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-body-emphasis" id="edomex-tab" data-bs-toggle="tab" data-bs-target="#edomex-tab-pane" type="button" role="tab" aria-controls="edomex-tab-pane" aria-selected="false">EDOMEX</button>
+          </li>
+          <!-- MORELOS TAB -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-body-emphasis" id="morelos-tab" data-bs-toggle="tab" data-bs-target="#morelos-tab-pane" type="button" role="tab" aria-controls="morelos-tab-pane" aria-selected="false">Morelos</button>
+          </li>
+          <!-- GUERRERO TAB -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-body-emphasis" id="guerrero-tab" data-bs-toggle="tab" data-bs-target="#guerrero-tab-pane" type="button" role="tab" aria-controls="guerrero-tab-pane" aria-selected="false">Guerrero</button>
+          </li>
+          <!-- CHIAPAS TAB -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-body-emphasis" id="chiapas-tab" data-bs-toggle="tab" data-bs-target="#chiapas-tab-pane" type="button" role="tab" aria-controls="chiapas-tab-pane" aria-selected="false">Chiapas</button>
+          </li>
+        </ul>
+        <!----- FIN DE TABS ESTRUCTURA ----->
+
+        <!----- INFO DE LOS SERVICIOS ----->
+        <div class="tab-content" id="myTabContent">
+          <!-- CDMX -->
+          <div class="tab-pane fade show active" id="cdmx-tab-pane" role="tabpanel" aria-labelledby="cdmx-tab" tabindex="0">
+            {{ render_servicios('cdmx' | get_servicios) }}
+          </div>
+
+          <!-- EDOMEX -->
+          <div class="tab-pane fade" id="edomex-tab-pane" role="tabpanel" aria-labelledby="edomex-tab" tabindex="0">
+            {{ render_servicios('edomex' | get_servicios) }}
+          </div>
+
+          <!-- MORELOS -->
+          <div class="tab-pane fade" id="morelos-tab-pane" role="tabpanel" aria-labelledby="morelos-tab" tabindex="0">
+            {{ render_servicios('morelos' | get_servicios) }}
+          </div>
+
+          <!-- GUERRERO -->
+          <div class="tab-pane fade" id="guerrero-tab-pane" role="tabpanel" aria-labelledby="guerrero-tab" tabindex="0">
+            {{ render_servicios('guerrero' | get_servicios) }}
+          </div>
+
+          <!-- CHIAPAS -->
+          <div class="tab-pane fade" id="chiapas-tab-pane" role="tabpanel" aria-labelledby="chiapas-tab" tabindex="0">
+            {{ render_servicios('chiapas' | get_servicios) }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!---------- ABOUT & EXPERIENCE ---------->
+    {% include "partials/experiencia.html" %}
+
+    <!--------- CONTACT & MAPS --------->
+    {% include "partials/contact.html" %}
+
+    <!---------- Q&A ---------->
+    <section id="frequent-questions">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Preguntas frecuentes</h2>
+        <div class="accordion accordion-flush" id="contenedorPreguntas">
+          <!-- QUESTION 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                ¿Cuánto tiempo tardan en completar mis trámites?
+              </button>
+            </h2>
+            <div id="flush-collapse1" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+              <div class="accordion-body">
+                <p>El tiempo que demora tener el trámite listo es de 5 a 10 días hábiles desde que entrega los requisitos, el tiempo puede variar dependiendo del tipo de trámite que quiera realizar.</p>
+              </div>
+            </div>
+          </div>
+          <!-- QUESTION 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                ¿Cuáles son los documentos necesarios para realizar trámites vehiculares?
+              </button>
+            </h2>
+            <div id="flush-collapse2" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+              <div class="accordion-body">
+                <p>Los documentos necesarios pueden variar según el tipo de trámite, pero en general, algunos documentos comunes incluyen:</p>
+                <ul>
+                  <li>Identificación oficial del propietario</li>
+                  <li>Comprobante de domicilio</li>
+                  <li>Factura original del vehiculo</li>
+                  <li>Comprobante de pago de tenencia y verificación</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- QUESTION 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
+                ¿Con la gestoría de placas que es lo que me entregan?
+              </button>
+            </h2>
+            <div id="flush-collapse3" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+              <div class="accordion-body">
+                <p>Entregamos los</p>
+                <ul>
+                  <li>Placas delanteras y traseras</li>
+                  <li>Tarjeta holograma</li>
+                  <li>Engomado</li>
+                  <li>Línea de captura</li>
+                  <li>Recibo de pago</li>
+                  <li>Constancia de trámite vehicular</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- QUESTION 4  -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4">
+                ¿Es necesario contratar un servicio de gestión vehicular o puedo realizar los trámites por mi cuenta?
+              </button>
+            </h2>
+            <div id="flush-collapse4" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
+              <div class="accordion-body">
+                <p>La posibilidad de realizar los trámites por cuenta propia depende de la complejidad de los procedimientos y de la familiaridad del solicitante con la normativa vigente. Sin embargo, contratar nuestros servicios puede ofrecer ventajas como:</p>
+                <ul>
+                  <li>Ahorro de tiempo y esfuerzo</li>
+                  <li>Evitar errores que puede retrasar el proceso del trámite</li>
+                  <li>Acceso a la experiencia y conocimiento de expertos en gestoría vehicular</li>
+                  <li>Seguimiento y actualización sobre cambios en regulaciones y requisitos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

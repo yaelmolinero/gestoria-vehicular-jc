@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{# ########## TITULO DE LA PAGINA ########## #}
+{% block title %}Nosotros{% endblock %}}
+
+{# ########## PARA LA BÚSQUEDA SEO ########## #}
+{% block head %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+  #hero {
+    background: linear-gradient(to bottom, #112d4e, #19477C);
+    color: #F9F7F7;
+  }
+
+  .contenido {
+    font-size: 1.25rem;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  ul {
+    /*list-style-type: none;*/
+    display: inline-block;
+    padding: 0;
+  }
+</style>
+{% endblock %}
+
+{# ########## CONTENIDO PRINCIPAL ########## #}
+{% block content %}
+
+<div class="parent-container" style="height: 1000px;">
+  <div class="px-4 pt-5 my-5 text-center border-bottom" id="hero">
+    <h1 class="display-4 fw-bold">Sobre nosotros</h1>
+    <div class="col-lg-8 col-xl-6 mx-auto">
+      <p class="lead mb-4">Somos expertos en la gestoría vehicular ubicados cerca del centro de Tlalnepantla, nos caracterizamos por la eficiencia en nuestro trabajo con más de 10 años de experiencia. Ofrecemos tramites para los estados de México, Ciudad de México, Morelos, Guerrero y Chiapas.</p>
+    </div>
+    <div style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="https://images.unsplash.com/photo-1551830820-330a71b99659?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm9yZCUyMGYxNTB8ZW58MHx8MHx8fDA%3D" class="img-fluid rounded-3 shadow-lg mb-4" alt="Coche azul" width="700" height="450">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-10 col-lg-8 col-xl-6 mx-auto text-center py-4">
+  <p class="contenido fw-bold">Somos un negocio dedicado a la gestion vehicular con más de 10 años de experiencia.</p>
+  <p class="contenido">Nos caracterizamos por la eficiencia y confiabilidad en nuestro trabajo, ya que lo más importante
+    para nosotros es que puedas obtener tus documentos de manera ágil y sencilla.</p>
+  <p class="contenido">En un entorno donde la complejidad de los trámites puede ser abrumadora, ofrecemos el servicio para
+    guiar a nuestros clientes a través de los procesos, asegurándonos de que cada paso se lleve a cabo de manera
+    correcta y oportuna.</p>
+  <p class="contenido">Si busca un socio confiable y con experiencia para gestionar los trámites vehiculares de manera
+    eficiente y sin complicaciones, confíe en nosotros. En nuestra gestoría, la paciencia y el compromiso se combinan
+    para ofrecer un servicio excepcional que simplifica su vida en el mundo de los vehículos.</p>
+
+  <h2 class="text-emphasis fw-bold my-4">Misión</h2>
+  <p class="contenido">Facilitar y optimizar la experiencia vehicular simplificando los trámites administrativos,
+    brindando soluciones eficientes que permitan a nuestros clientes dedicar más tiempo a disfrutar de sus vehículos y
+    menos a preocuparse por trámites complicados.</p>
+
+  <h2 class="fw-bold my-4">Visión</h2>
+  <p class="contenido">Ser la gestoría líder de confianza, reconocida por la excelencia en la presentación de servicios.
+    Aspiramos a expandir nuestra presencia y mantenernos a la vanguardia de las tendencias del sector, consolidándonos
+    como referente en la gestion vehicular.</p>
+
+  <h2 class="fw-bold my-4">Valores</h2>
+  <ul class="contenido">
+    <li>Compromiso</li>
+    <li>Transparencia</li>
+    <li>Eficiencia</li>
+    <li>Servicio al cliente</li>
+    <li>Respeto</li>
+  </ul>
+</div>
+
+<script type="module">
+  function resizeHero () {
+    let parent = document.getElementById("hero");
+    let title = parent.firstElementChild;
+    let p = title.nextElementSibling;
+    let img = document.querySelector(".img-fluid").height;
+    document.querySelector(".parent-container").style.height = title.offsetHeight + p.offsetHeight + img + 48*2 + 24 + "px";
+  }
+
+  window.onload = resizeHero();
+  window.addEventListener("resize", resizeHero);
+</script>
+
+<script src="{{ url_for('static', filename='/js/servicio_base.js') }}"></script>
+{% endblock %}
