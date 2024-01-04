@@ -97,8 +97,8 @@ class FotosCamioneta(db.Model):
         return f"<Foto: {self.id} of {self.id_camioneta}>"
 
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 # -------------------- FUNCIONES DE APOYO -------------------- #
 @app.template_filter()
 def get_servicios(estado):

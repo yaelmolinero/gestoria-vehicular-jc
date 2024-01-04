@@ -14,7 +14,7 @@
 <meta property="og:image" content="{{ url_for('static', filename='img/placas/{}_placas.png'.format(estado)) }}">
 <meta property="og:image:alt" content="placas de {{ estado }}">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/servicio.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/servicio.css') }}">
 {% endblock %}
 
 {# ########## CONTENIDO PRINCIPAL ########## #}
@@ -97,5 +97,5 @@
     </section>
   {% endif %}
 
-<script src="{{ url_for('static', filename='/js/servicio_base.js') }}"></script>
+<script src="{{ url_for('static', filename='js/servicio_base.js') }}"></script>
 {% endblock %}
