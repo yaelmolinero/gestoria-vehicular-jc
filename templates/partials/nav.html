@@ -1,5 +1,18 @@
 {% set current_user = '' | check_admin %}
 
+{% macro lista_servicios(estado) %}
+  {% for servicio in estado | get_servicios %}
+    {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
+    <li>
+      <a class="dropdown-item d-flex gap-2 align-items-center"
+         href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
+        <i class="bi {{ servicio.icon }}"></i>
+        {{ servicio.nombre }}
+      </a>
+    </li>
+  {% endfor %}
+{% endmacro %}
+
 <nav class="navbar navbar-expand-lg fixed-top" id="navigation" aria-label="Offcanvas navbar large">
   <div class="container">
     <!-- NOMBRE, LOGO Y BOTÓN PARA LA BARRA LATERAL -->
@@ -25,16 +38,7 @@
             <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='cdmx') }}">CDMX</a>
             <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <ul class="dropdown-menu lista-servicios">
-              {% for servicio in ("cdmx" | get_servicios) %}
-                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
-                <li>
-                  <a class="dropdown-item d-flex gap-2 align-items-center"
-                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
-                    <i class="bi {{ servicio.icon }}"></i>
-                    {{ servicio.nombre }}
-                  </a>
-                </li>
-              {% endfor %}
+              {{ lista_servicios('cdmx') }}
               {% if current_user.is_authenticated %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
@@ -45,16 +49,7 @@
             <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='edomex') }}">EDOMEX</a>
             <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <ul class="dropdown-menu lista-servicios">
-              {% for servicio in ('edomex' | get_servicios) %}
-                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
-                <li>
-                  <a class="dropdown-item d-flex gap-2 align-items-center"
-                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
-                    <i class="bi {{ servicio.icon }}"></i>
-                    {{ servicio.nombre }}
-                  </a>
-                </li>
-              {% endfor %}
+              {{ lista_servicios('edomex') }}
               {% if current_user.is_authenticated %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
@@ -65,16 +60,7 @@
             <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='morelos') }}">Morelos</a>
             <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <ul class="dropdown-menu lista-servicios">
-              {% for servicio in ('morelos' | get_servicios) %}
-                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
-                <li>
-                  <a class="dropdown-item d-flex gap-2 align-items-center"
-                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
-                    <i class="bi {{ servicio.icon }}"></i>
-                    {{ servicio.nombre }}
-                  </a>
-                </li>
-              {% endfor %}
+              {{ lista_servicios('morelos') }}
               {% if current_user.is_authenticated %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
@@ -85,16 +71,7 @@
             <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='guerrero') }}">Guerrero</a>
             <a class="tt d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <ul class="dropdown-menu lista-servicios">
-              {% for servicio in ('guerrero' | get_servicios) %}
-                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
-                <li>
-                  <a class="dropdown-item d-flex gap-2 align-items-center"
-                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
-                    <i class="bi {{ servicio.icon }}"></i>
-                    {{ servicio.nombre }}
-                  </a>
-                </li>
-              {% endfor %}
+              {{ lista_servicios('guerrero') }}
               {% if current_user.is_authenticated %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>
@@ -105,16 +82,7 @@
             <a class="nav-link link-estado" href="{{ url_for('current_estado', estado='chiapas') }}">Chiapas</a>
             <a class="d-lg-none nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
             <ul class="dropdown-menu lista-servicios">
-              {% for servicio in ('chiapas' | get_servicios) %}
-                {% set nombre_espaciado = "-".join(servicio.nombre.split(" ")) %}
-                <li>
-                  <a class="dropdown-item d-flex gap-2 align-items-center"
-                     href="{{ url_for('current_servicio', estado=servicio.estado, nombre=nombre_espaciado) }}">
-                    <i class="bi {{ servicio.icon }}"></i>
-                    {{ servicio.nombre }}
-                  </a>
-                </li>
-              {% endfor %}
+              {{ lista_servicios('chiapas') }}
               {% if current_user.is_authenticated %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{ url_for('add_servicio') }}">Agregar servicio</a></li>

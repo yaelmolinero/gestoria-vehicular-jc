@@ -9,9 +9,12 @@
 <meta name="description" content="Gestoría Vehicular para la Ciudad de México, Estado de México, Morelos, Guerrero y Chiapas desde Estado de México.">
 <meta name="keywords" content="gestoria vehicular, gestoria vehicular en edomex, gestoria vehicular en cdmx, gestoria vehicular en morelos, gestoria vehicular en guerrero, gestoria vehicular en chiapas, placas edomex, placas cdmx, placas para motos, tramites vehiculares, reemplacamiento, reemplacamiento edomex, reemplacamiento cdmx, gestor vehicular, gestor de placas, placas para carros">
 
+<meta property="og:url" content="{{ request.url }}">
 <meta property="og:title" content="Servicios de Gestoría Vehicular para CDMX, EDOMEX, Morelos, Chiapas y Guerrero">
 <meta property="og:description" content="Una gestoría eficiente y de confianza donde te podemos ayudar con tus tramites vehiculares como Altas y Bajas, Cambio de Entidad, Cambios de Propietario, Placas Federales, entre otros.">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{{ url_for('static', filename='img/hero_img/home_ilustracion.png') }}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="personas trabajando en equipo">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-servicios.css') }}">
@@ -110,27 +113,27 @@
         <div class="tab-content" id="myTabContent">
           <!-- CDMX -->
           <div class="tab-pane fade show active" id="cdmx-tab-pane" role="tabpanel" aria-labelledby="cdmx-tab" tabindex="0">
-            {{ render_servicios('cdmx' | get_servicios) }}
+            {{ render_servicios('cdmx') }}
           </div>
 
           <!-- EDOMEX -->
           <div class="tab-pane fade" id="edomex-tab-pane" role="tabpanel" aria-labelledby="edomex-tab" tabindex="0">
-            {{ render_servicios('edomex' | get_servicios) }}
+            {{ render_servicios('edomex') }}
           </div>
 
           <!-- MORELOS -->
           <div class="tab-pane fade" id="morelos-tab-pane" role="tabpanel" aria-labelledby="morelos-tab" tabindex="0">
-            {{ render_servicios('morelos' | get_servicios) }}
+            {{ render_servicios('morelos') }}
           </div>
 
           <!-- GUERRERO -->
           <div class="tab-pane fade" id="guerrero-tab-pane" role="tabpanel" aria-labelledby="guerrero-tab" tabindex="0">
-            {{ render_servicios('guerrero' | get_servicios) }}
+            {{ render_servicios('guerrero') }}
           </div>
 
           <!-- CHIAPAS -->
           <div class="tab-pane fade" id="chiapas-tab-pane" role="tabpanel" aria-labelledby="chiapas-tab" tabindex="0">
-            {{ render_servicios('chiapas' | get_servicios) }}
+            {{ render_servicios('chiapas') }}
           </div>
         </div>
       </div>

@@ -9,9 +9,12 @@
 <meta name="description" content="{{ servicio.descripcion }}">
 <meta name="keywords" content="{{ servicio.nombre }} {{ estado }}, gestoria vehicular {{ estado }}, gestor de placas {{ estado }}, placas {{ estado }}, tramites vehiculares {{ nombre }}, gestoria {{ estado }}">
 
+<meta property="og:url" content="{{ request.url }}">
 <meta property="og:title" content="Servicio de {{ servicio.nombre }} para {{ estado }}.">
 <meta property="og:description" content="{{ servicio.descripcion }}">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{{ url_for('static', filename='img/placas/{}_placas.png'.format(estado)) }}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="placas de {{ estado }}">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/servicio.css') }}">
@@ -98,4 +101,10 @@
   {% endif %}
 
 <script src="{{ url_for('static', filename='js/servicio_base.js') }}"></script>
+<script>
+// Fuera de las páginas principales de cada estado no hay sección de contacto, ni nosotros
+// Este es un pequeño script para cambiar el url de "Nosotros" y "Contacto" en la barra de navegación.
+document.querySelector("#nosotros").href = "{{ request.url_root }}nosotros";
+document.querySelector("#contacto-nav").href = "{{ request.url_root }}#contacto";
+</script>
 {% endblock %}

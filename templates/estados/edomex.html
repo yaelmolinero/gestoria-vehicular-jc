@@ -11,9 +11,12 @@
 gestoria edomex, placas para motos edomex, tramites vehiculares edomex, verificacion edomex, gestor de placas edomex, placas edomex,
 altas vehiculares edomex, verificacion vehicular edomex">
 
+<meta property="og:url" content="{{ request.url }}">
 <meta property="og:title" content="Servicios de Gestoría Vehicular para el Estado de México.">
 <meta property="og:description" content="Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificacion, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{{ url_for('static', filename='img/placas/edomex_placas.png') }}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="placas del estado de mexico">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-servicios.css') }}">
@@ -55,7 +58,7 @@ altas vehiculares edomex, verificacion vehicular edomex">
     <h2 class="fw-bold mt-4">Servicios</h2>
     <!----- INFO DE LOS SERVICIOS ----->
     <div class="tab-pane fade show active" id="cdmx-tab-pane" role="tabpanel" aria-labelledby="cdmx-tab" tabindex="0">
-      {{ render_servicios('edomex' | get_servicios) }}
+      {{ render_servicios('edomex') }}
     </div>
   </div>
 </section>

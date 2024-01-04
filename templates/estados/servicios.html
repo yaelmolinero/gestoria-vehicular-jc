@@ -1,6 +1,6 @@
-{% macro render_servicios(todos_los_servicios) %}
+{% macro render_servicios(estado) %}
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-    {% for servicio in todos_los_servicios %}
+    {% for servicio in estado | get_servicios %}
       <div class="col d-flex align-items-start">
         <h3>
           <a href="{{ url_for('current_servicio', estado=servicio.estado, nombre='-'.join(servicio.nombre.split(' '))) }}" class="link-body-emphasis">

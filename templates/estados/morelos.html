@@ -11,9 +11,13 @@
 placas para motos morelos, tramites vehiculares morelos, verificacion morelos, gestor de placas morelos, placas morelos,
 altas vehiculares morelos, verificacion vehicular morelos">
 
+<meta property="og:url" content="{{ request.url }}">
 <meta property="og:title" content="Servicios de Gestoría Vehicular para Morelos.">
 <meta property="og:description" content="Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificacion, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{{ url_for('static', filename='img/placas/morelos_placas.png') }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="placas del estado de morelos">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-servicios.css') }}">n
 {% endblock %}
@@ -54,7 +58,7 @@ altas vehiculares morelos, verificacion vehicular morelos">
     <h2 class="fw-bold mt-4">Servicios</h2>
     <!----- INFO DE LOS SERVICIOS ----->
     <div class="tab-pane fade show active" id="cdmx-tab-pane" role="tabpanel" aria-labelledby="cdmx-tab" tabindex="0">
-      {{ render_servicios('morelos' | get_servicios) }}
+      {{ render_servicios('morelos') }}
     </div>
   </div>
 </section>
@@ -114,7 +118,7 @@ altas vehiculares morelos, verificacion vehicular morelos">
         </h3>
         <div id="flush-collapse3" class="accordion-collapse collapse" data-bs-parent="#contenedorPreguntas">
           <div class="accordion-body">
-            <p>Para obtener más información, lo mejor es ponerse en <a href="#" style="color: #ffb738; text-decoration: none;">contacto</a>
+            <p>Para obtener más información, lo mejor es ponerse en <a href="https://wa.me/525549963965?text=Hola!%20Me%20gustaia%20obtener%20informacion%20sobre%20sus%20servicios" style="color: #ffb738; text-decoration: none;">contacto</a>
               vía WhatspApp, donde les enviaremos los costos, requisitos e instrucciones para llevar a cabo el trámite.</p>
           </div>
         </div>
