@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect, request, url_for, abort, send_from_directory, flash
+from flask import Flask, render_template, redirect, request, url_for, send_from_directory, flash
+from flask_login import UserMixin, LoginManager, login_required, login_user, logout_user
 from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from jinja2.exceptions import TemplateNotFound
 from secrets import token_hex
 from time import sleep
-from functools import wraps
 import smtplib
 import os
 from forms import RegistraServicio, LoginAdmin
@@ -15,8 +15,8 @@ app.config["SECRET_KEY"] = token_hex(32)
 ckeditor = CKEditor(app)
 
 # -------------------- CONECTAR BASE DE DATOS -------------------- #
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URI")
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gestoria.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URI")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gestoria.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
 
@@ -25,21 +25,23 @@ MY_EMAIL = os.getenv("MY_EMAIL")
 FROM_EMAIL = os.getenv("FROM_EMAIL")
 PS = os.getenv("PS")
 
-class Admin:
-    def __init__(self):
-        self.password = os.getenv("ADPS")
-        self.is_authenticated = False
+login_manager = LoginManager(app)
+login_manager.login_view = "login_admin"
 
 
-admin = Admin()
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.get(user_id)
 
-def admin_only(func):
-    @wraps(func)
-    def decorated_function(*args, **kwargs):
-        if admin.is_authenticated:
-            return func(*args, **kwargs)
-        return abort(403)
-    return decorated_function
+
+class Admin(UserMixin):
+    def __init__(self, user_id):
+        self.id = user_id
+
+    @staticmethod
+    def get(user_id):
+        return Admin(user_id)
+
 
 # -------------------- ESTRUCTURA DE LA BASE DE DATOS -------------------- #
 class Servicio(db.Model):
@@ -55,6 +57,7 @@ class Servicio(db.Model):
     def __repr__(self):
         return f"<Servicio: {self.nombre}>"
 
+
 class Pregunta(db.Model):
     __tablename__ = "preguntas"
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
@@ -65,6 +68,7 @@ class Pregunta(db.Model):
 
     def __repr__(self):
         return f"<Pregunta: {self.pregunta}>"
+
 
 class Camioneta(db.Model):
     __tablename__ = "camionetas"
@@ -85,6 +89,7 @@ class Camioneta(db.Model):
     def __repr__(self):
         return f"<Camioneta: {self.id}, {self.marca}, {self.modelo}, {self.tipo}>"
 
+
 class FotosCamioneta(db.Model):
     __tablename__ = "fotos_camionetas"
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
@@ -104,22 +109,22 @@ class FotosCamioneta(db.Model):
 def get_servicios(estado):
     return Servicio.query.filter_by(estado=estado).all()
 
-@app.template_filter()
-def check_admin(l):
-    return admin
 
 @app.template_filter()
 def get_api_key(name):
     return os.getenv(name)
+
 
 # -------------------- RUTAS DE LA PAGINA -------------------- #
 @app.route("/")
 def home():
     return render_template("index.html", estado="")
 
+
 @app.route("/nosotros")
 def nosotros():
     return render_template("nosotros.html")
+
 
 # DEVUELVE LA PAGINA PARA CADA ESTADO
 @app.route("/<estado>")
@@ -128,6 +133,7 @@ def current_estado(estado):
         return render_template(f"/estados/{estado}.html", estado=estado)
     except TemplateNotFound:
         return redirect(url_for("page_not_found", e=404))
+
 
 # DEVUELVE EL SERVICIO DENTRO DEL ESTADO SELECCIONADO
 @app.route("/<estado>/<nombre>")
@@ -139,10 +145,11 @@ def current_servicio(estado, nombre):
     except TemplateNotFound:
         return redirect(url_for("page_not_found", e=404))
 
+
 # -------------------- FUNCIONES DE ADMINISTRADOR -------------------- #
 # AÑADIMOS UN NUEVO SERVICIO
 @app.route("/admin/crear-servicio", methods=["GET", "POST"])
-@admin_only
+@login_required
 def add_servicio():
     form = RegistraServicio()
 
@@ -167,9 +174,10 @@ def add_servicio():
         return redirect(url_for("current_estado", estado=form.estado.data))
     return render_template("formulario-servicio.html", form=form, editar_servicio=False)
 
+
 # EDITA INFORMACIÓN DEL SERVICIO
 @app.route("/admin/editar-servicio/<estado>/<int:s_id>", methods=["GET", "POST"])
-@admin_only
+@login_required
 def editar_servicio(estado, s_id):
     servicio = Servicio.query.get(s_id)
 
@@ -220,9 +228,10 @@ def editar_servicio(estado, s_id):
                                 nombre="-".join(servicio.nombre.split(" "))))
     return render_template("formulario-servicio.html", form=form, editar_servicio=True)
 
-# Editamos el servicio
+
+# Eliminamos el servicio
 @app.route("/admin/eliminar/<estado>/<int:s_id>", methods=["POST"])
-@admin_only
+@login_required
 def eliminar_servicio(estado, s_id):
     servicio_eliminado = Servicio.query.get(s_id)
 
@@ -236,44 +245,49 @@ def eliminar_servicio(estado, s_id):
 
     return redirect(url_for("current_estado", estado=estado))
 
+
 # Ingresar administrador
 @app.route("/admin", methods=["GET", "POST"])
 def login_admin():
-    global admin
     form = LoginAdmin()
 
     if form.validate_on_submit():
-        if form.password.data == admin.password:
-            admin.is_authenticated = True
+        if form.password.data == os.getenv("ADPS"):
+            user = Admin(1)
+            login_user(user)
             return redirect(url_for("home"))
         flash("Contraseña incorrecta.")
 
     return render_template("login.html", form=form)
 
+
 # Salir administrador
 @app.route("/admin/salir")
 def logout_admin():
-    global admin
-    admin.is_authenticated = False
+    logout_user()
     return redirect(url_for("home"))
 
 # -------------------- FIN DE ADMINISTRADOR -------------------- #
+
 
 # Robots txt
 @app.route("/robots.txt")
 def robots_txt():
     return send_from_directory(app.static_folder, "robots.txt")
 
+
 # Sitemap
 @app.route("/sitemap.xml")
 def sitemap_xml():
     return send_from_directory(app.static_folder, "sitemap.xml")
+
 
 # Error 404
 @app.route("/error/<e>")
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
+
 
 # FORMULARIO DE CONTACTO
 @app.route("/contact-mail", methods=["POST"])
