@@ -8,26 +8,26 @@
     <url>
         <loc>https://gestoriavehicular.com/cdmx</loc>
         <lastmod>2023-08-16T14:48:16+00:00</lastmod>
-        <priority>9.00</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://gestoriavehicular.com/edomex</loc>
         <lastmod>2023-08-16T14:48:16+00:00</lastmod>
-        <priority>9.00</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://gestoriavehicular.com/morelos</loc>
         <lastmod>2023-08-16T14:48:16+00:00</lastmod>
-        <priority>8.00</priority>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://gestoriavehicular.com/chiapas</loc>
         <lastmod>2023-08-16T14:48:16+00:00</lastmod>
-        <priority>7.00</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://gestoriavehicular.com/guerrero</loc>
         <lastmod>2023-08-16T14:48:16+00:00</lastmod>
-        <priority>7.00</priority>
+        <priority>0.7</priority>
     </url>
 </urlset>
