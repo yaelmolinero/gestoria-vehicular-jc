@@ -15,8 +15,8 @@ app.config["SECRET_KEY"] = token_hex(32)
 ckeditor = CKEditor(app)
 
 # -------------------- CONECTAR BASE DE DATOS -------------------- #
-# app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URI")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gestoria.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URI")
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gestoria.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
 
