@@ -35,7 +35,7 @@
           <a role="button" class="compartir shadow" onclick="copiarContenido('{{ current_url }}')"><i class="bi bi-link"></i></a>
           <a href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}" target="_blank" rel="noopener noreferrer" class="compartir shadow"><i class="bi bi-facebook"></i></a>
           <a href="https://twitter.com/intent/tweet?url={{ current_url }}&text={{ nombre_servicio }}" target="_blank" rel="noopener noreferrer" class="compartir shadow"><i class="bi bi-twitter"></i></a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ current_url }}" target="_blank" rel="noopener noreferrer" class="compartir shadow"><i class="bi bi-linkedin"></i></a>
+{#<!--          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ current_url }}" target="_blank" rel="noopener noreferrer" class="compartir shadow"><i class="bi bi-linkedin"></i></a>-->#}
           <a href="https://api.whatsapp.com/send?text={{ nombre_servicio }}%20para%20{{ servicio.estado }}%0A{{ current_url }}" target="_blank" rel="noopener noreferrer" class="compartir shadow"><i class="bi bi-whatsapp"></i></a>
       </div>
       <!-- REQUISITOS (alternar a col-lg-7 / 9) -->

@@ -26,21 +26,28 @@
 {# ########## CONTENIDO PRINCIPAL ########## #}
 {% block content %}
 
-<form method="POST">
-  {{ form.csrf_token }}
-  <h1 class="text-center"><i class="bi bi-folder"></i></h1>
-  <h2 class="fw-bold">Ingresar administrador</h2>
-  <div class="my-3 form-floating">
-    {{ form.password(**{'class': 'form-control'}) }}
-    {{ form.password.label }}
+{% if current_user.is_authenticated %}
+  <div style="text-align: center;">
+    <h3 class="text-emphasis fw-bold mb-4">Ya has ingresado como administrador.</h3>
+    <a class="btn btn-dark px-4" href="{{ url_for('home') }}">Regresar a la página inicial</a>
   </div>
+{% else %}
+  <form method="POST">
+    {{ form.csrf_token }}
+    <h1 class="text-center"><i class="bi bi-folder"></i></h1>
+    <h2 class="fw-bold">Ingresar administrador</h2>
+    <div class="my-3 form-floating">
+      {{ form.password(**{'class': 'form-control'}) }}
+      {{ form.password.label }}
+    </div>
 
-  {{ form.submit(**{'class': 'btn btn-dark py-2'}) }}
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <p class="fw-bold text-danger mt-2">{{ messages[0] }}</p>
-    {% endif %}
-  {% endwith %}
-</form>
+    {{ form.submit(**{'class': 'btn btn-dark py-2'}) }}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="fw-bold text-danger mt-2">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+  </form>
+{% endif %}
 
 {% endblock %}

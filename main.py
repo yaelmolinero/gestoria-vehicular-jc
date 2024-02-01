@@ -254,7 +254,7 @@ def login_admin():
     if form.validate_on_submit():
         if form.password.data == os.getenv("ADPS"):
             user = Admin(1)
-            login_user(user)
+            login_user(user, remember=True)
             return redirect(url_for("home"))
         flash("Contraseña incorrecta.")
 

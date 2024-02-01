@@ -9,6 +9,10 @@ body {
     padding-top: 100px;
 }
 
+#requisitos-cuerpo  a {
+    text-decoration: none;
+}
+
 .banner {
     width: 100%;
     height: 100%;
