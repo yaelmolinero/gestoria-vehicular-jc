@@ -1,0 +1,35 @@
+---
+import Servicio from "../../layouts/Servicio.astro";
+import SeoBasico from "../../components/parts/SeoBasico.astro";
+
+const currentUrl = Astro.url.href;
+---
+<SeoBasico
+  slot="seo"
+  description="Conoce los requisitos para el alta y baja de vehiculos o motocicletas"
+  keywords="alta de vehiculo, alta de motos, gestoria vehicular altas y bajas, baja de placas, alta vehicular cdmx"
+  ogUrl={ currentUrl }
+  ogTitle="Servicio de altas y bajas | Gestoria Vehicular JC"
+  ogDescription="Conce los requisitos para el alta y baja de vehiculos o motocicletas."
+/>
+
+<Servicio
+  title="Bajas y Altas | Gestoría Vehicular JC"
+  nombre="Bajas y Altas"
+  descripcion="Conoce los requisitos para la alta y baja para un vehiculo o motocicleta."
+  iconClass="bi-card-checklist"
+>
+  <p>Las placas son <strong>uno de los elementos obligatorios</strong> para cualquier vehiculo que circule por las calles.</p>
+  <p>Cuando un propietario adquiere un vehiculo nuevo o usado, debe realizar la <strong>alta del vehiculo</strong>, trámite que tiene como finalidad obtener las placas, tarjeta de circulación y calcomanía.</p>
+  <p>Por otra parte, si el propietario ya no usara el vehiculo tendrá que realizar la <strong>baja de las placas</strong>, otro trámite para que el vehiculo quede a la regla.</p>
+  
+  <h2>Requisitos</h2>
+
+  <p>Para realizar la <strong>alta o baja</strong> de su auto, moto o cualquier vehiculo solicitamos los siguientes documentos y nosotros nos encargamos del proceso.</p>
+  <ul>
+    <li><strong>Identificaión Oficial del Propietario.</strong> Puede ser IFE o INE, pasaporte o licencia de conducir.</li>
+    <li><strong>Comprobante de Domicilio.</strong> Puede ser recibo de luz o agua, predial, constancia domiciliaria, entre otros.</li>
+    <li><strong>Factura Original del Vehiculo.</strong> Debe tener los datos del vehiculo (número de serie, modelo, clave vehicular, fecha de operación).</li>
+    <li><strong>Tarjeta de Circulación y Placas</strong> (solo para baja vehicular).</li>
+  </ul>
+</Servicio>

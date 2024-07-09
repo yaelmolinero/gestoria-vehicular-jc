@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="mb-20">
+  <div class="bg-[#112D4E] py-10 text-center text-white">
+    <h2 class="text-5xl font-bold mb-2">Nosotros</h2>
+    <div class="px-3 lg:w-1/2 mx-auto">
+      <p class="font-bold text-xl mb-4">Somo un negocio dedicado a la gestion vehicular con más de 10 años de experiencia.</p>
+      <p class="text-xl font-light mb-4">Nos caracterisamos por la eficiencia y la confiabilidad en nuestro trabajo, ya que lo más importante para nosotros es que puedas obtener tus documentos de manera ágil y sencilla.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-jc mx-auto px-3 py-10 mt-10">
+    <div class="flex flex-col lg:flex-row-reverse items-center gap-8">
+      <div class="w-full lg:flex-1">
+        <h2 class="text-5xl font-bold mb-3">Más de 10 años de experiencia</h2>
+        <p class="text-xl font-light mb-4">En un entorno donde la complejidad de los trámites puede ser abrumadora, ofrecemos el servicio para guiar a nuestros clientes a través de los procesos, asegurándonos de que cada paso se lleve a cabo de manera correcta y oportuna.</p>
+        <p class="text-xl font-light mb-4">En nuestra gestoría la paciencia y el compromiso se combinan para ofrecer un servicio excepcional que simplifica su vida en el mundo de los vehículos.</p>
+        <p class="text-xl font-light mb-4">Si busca un socio confiable y con experiencia para gestionar los trámites vehiculares de manera eficiente y sin complicaciones, confíe en nosotros.</p>
+        <a href="/nosotros" class="text-[#112D4E] font-bold">Más de nosotros...</a>
+      </div>
+      <div class="w-4/5 sm:w-2/3 lg:flex-1">
+        <Image src="/images/experiencia.png" class="block max-w-full h-auto lg:mx-auto" alt="Imagen representativa de la experiencia obtenida con el paso del tiempo" width={500} height={500} decoding="async" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>

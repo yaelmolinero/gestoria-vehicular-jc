@@ -1,0 +1,30 @@
+---
+import Servicio from "../components/parts/Servicio.astro";
+---
+<section class="mb-20">
+  <div class="container-jc mx-auto px-3">
+    <h2 class="text-3xl font-bold">Servicios</h2>
+
+    <div class="flex flex-wrap">
+      <Servicio
+        href="/servicios/altas-y-bajas"
+        name="Altas y Bajas"
+        description="Es un texto que tiene como unico proposito el de hacer relleno y ver como se acomoda"
+        iconClass="bi-card-checklist"
+      />
+
+      <Servicio 
+        href="/servicios/cambio-de-propietario"
+        name="Cambio de Propietario"
+        description="Otra descripcion larga para ver como se ve en el Layout"
+        iconClass="bi-arrow-left-right"
+      />
+      <Servicio
+        href="/servicios/cambio-de-entidad"
+        name="Cambio de Entidad"
+        description="Bla bla el kevin huele a kk me lo dijo la manchas"
+        iconClass="bi-arrow-repeat"
+      />
+    </div>
+  </div>
+</section>

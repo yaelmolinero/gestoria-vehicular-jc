@@ -1,0 +1,70 @@
+---
+import IconLink from "./parts/IconLink.astro";
+
+interface Props {
+  almuadilla: boolean;
+}
+
+const pasarAlmuadilla = Astro.props.almuadilla ? "#" : "/";
+---
+
+<nav class="bg-[#112D4E] fixed z-10 left-0 right-0 py-2">
+  <div class="container-jc mx-auto px-2 flex items-center justify-between text-white">
+    <a class="flex items-center gap-3 text-2xl font-bold py-1" href="/" title="Inicio">
+      <i class="bi bi-folder"></i>
+      Gestoría Vehicular JC
+    </a>
+
+    <button class="block md:hidden border border-neutral-400 rounded-md py-1 px-4 text-xl text-neutral-400" data-toggle="#offcanvas"><i class="bi bi-list w-6"></i></button>
+
+    <div class="bg-white md:bg-inherit max-md:fixed max-md:top-0 max-md:bottom-0 max-md:left-0 max-md:w-4/5 max-md:-translate-x-[100vw] max-md:-z-10 block transition max-sm:w-full" id="offcanvas">
+      <div class="p-4 flex md:hidden items-center justify-between text-black border-b">
+        <h5 class="text-lg flex gap-2">
+          <i class="bi bi-folder"></i>
+          Gestoría Vehicular JC
+        </h5>
+        <button class="text-lg" id="cerrar-offcanvas"><i class="bi bi-x-lg"></i></button>
+      </div>
+
+      <div class="max-md:p-4">
+        <ul class="flex flex-col md:flex-row gap-5 text-lg max-md:text-black">
+          <li><a href="/nosotros" class="hover:text-yellow-500">Nosotros</a></li>
+          <li>
+            <div class="relative group">
+              <div class="flex max-md:justify-between gap-1 group-hover:text-yellow-500">
+                Servicios
+                <i class="bi bi-chevron-down group-hover:rotate-180 transition-transform duration-300"></i>
+              </div>
+    
+              <div class="hidden group-hover:block py-2 md:absolute md:top-full md:right-0 bg-white rounded-lg w-full md:w-[300px]">
+                <ul>
+                  <IconLink nombre="Altas y Bajas" href="/servicios/altas-y-bajas" iconName="bi-card-checklist"/>
+                  <IconLink nombre="Cambio de Propietario" href="/servicios/cambio-de-propietario" iconName="bi-arrow-left-right"/>
+                  <IconLink nombre="Cambio de Entidad" href="/servicios/cambio-de-entidad" iconName="bi-arrow-repeat"/>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href={`${ pasarAlmuadilla }contacto`} class="hover:text-yellow-500">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  #offcanvas.show {
+    z-index: 11;
+    transform: none;
+  }
+</style>
+
+<script>
+  document.querySelector("button[data-toggle='#offcanvas']").addEventListener("click", () => {
+    document.getElementById("offcanvas").classList.toggle("show");
+  });
+
+  document.getElementById("cerrar-offcanvas").addEventListener("click", () => {
+    document.getElementById("offcanvas").classList.remove("show");
+  })
+</script>

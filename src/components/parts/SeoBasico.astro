@@ -1,0 +1,21 @@
+---
+interface Props {
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogTitle: string;
+  ogDescription: string;
+}
+
+const { description, keywords, ogUrl, ogTitle, ogDescription } = Astro.props;
+---
+
+<meta name="description" content={ description }>
+<meta name="keywords" content={ keywords }>
+
+<meta property="og:url" content={ ogUrl }>
+<meta property="og:title" content={ ogTitle }>
+<meta property="og:description" content={ ogDescription }>
+<meta property="og:type" content="website">
+
+<slot />

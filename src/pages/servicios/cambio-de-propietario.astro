@@ -1,0 +1,36 @@
+---
+import Servicio from '../../layouts/Servicio.astro';
+import SeoBasico from '../../components/parts/SeoBasico.astro';
+
+const currentUrl = Astro.url.href;
+---
+
+<SeoBasico
+  slot='seo'
+  description='Si has comprado un auto usado de tu mismo estado o proveniente de otro estado, cambia el propietario para que seas el nuevo dueño'
+  keywords='Cambio de propietario, como hacer un cambio de propietario, cambio de placas, cambio de propietario motos'
+  ogUrl={ currentUrl }
+  ogTitle='Cambio de Propietario | Gestoría Vehicular JC'
+  ogDescription='Si has comprado un auto de tu mismo estado o proveniente de otro estado, cambia el propietario para que seas el nuevo dueño'
+/>
+
+<Servicio
+  title='Cambio de Propietario | Gestoría Vehicular JC'
+  nombre='Cambio de Propietario'
+  descripcion='Si has comprado un auto usado de tu mismo estado o de otro estado, cambio el propietario para que seas el nuevo dueño legalmente.'
+  iconClass='bi-arrow-left-right'
+>
+  <p>Cuando compras un auto usado es importante contratar el servicio de cambio de propietario que ofrecemos el cual le facilitara el trámite, pues nos encargaremos de realizar todo el trámite ofreciendo una experiencia <strong>rapida, fácil y segura</strong>.</p>
+  <p>Al realizar el cambio de propietario el nuevo dueño tiene la certeza que es el dueño legal del vehiculo, ademas se hace <strong>transferencia de derechos y obligaciones</strong> al nuevo dueño, de esta manera el vendedor queda libre de derechos y obligaciones sobre el vehiculo.</p>
+  <p><strong>Importante:</strong> Los nuevos propietarios tendrán un plazo de 15 días hábiles para realizar el trámite de cambio de propietario del auto, moto o remolque usado con la finalidad de no generar responsabilidades jurídicas y fiscales al vendedor y <strong>actualizar el patrón vehicular de la Secretaría de Movilidad</strong>.</p>
+
+  <h2>Requisitos</h2>
+
+  <p>Para <strong>realizar el cambio de propietario</strong> solicitamos:</p>
+  <ul>
+    <li><strong>Identificaión Oficial.</strong> Puede ser IFE o INE, pasaporte, licencia de conducir.</li>
+    <li><strong>Comprobante de Propiedad.</strong> Puede ser factura de origen, factura digital, factura no digital.</li>
+    <li><strong>Tarjeta de Circulación Vigente.</strong></li>
+    <li><strong>no tener adeudos de tenencia.</strong></li>
+  </ul>
+</Servicio>

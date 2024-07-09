@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SeoBasico from '../components/parts/SeoBasico.astro';
+import Hero from '../sections/Hero.astro';
+import Servicios from '../sections/Servicios.astro';
+import Nosotros from '../sections/Nosotros.astro';
+import Contacto from '../sections/Contacto.astro';
+import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
+import Pregunta from '../components/Pregunta.astro';
+
+const currentUrl = Astro.url.href;
+---
+
+<Layout title='Grstoría Vehicular para el Estado de México' almoadilla={ true }>
+  <SeoBasico
+    slot='seo'
+    description='Gestoría Vehicular para el Estado de México. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
+    keywords='tramites vehiculares edomex, verificacion vehicular edomex, placas edomex, gestor de placas edomex, placas para motos edomex, altas vehiculares edomex, gestoria vehicular edomex'
+    ogUrl={ currentUrl }
+    ogTitle='Servicios de Gestoría vehicular para el Estado de México.'
+    ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
+  >
+    <meta property="og:image" content={currentUrl + "images/placas/edomex_placas.png"}>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Placas del Estado de México">
+  </SeoBasico>
+  <main>
+    <Hero
+      title='Gestoría vehicular para el Estado de México'
+      subtitle='Te facilitamos y guiamos en los trámites vehiculares para el'
+      subtitleStrong='Estado de México'
+      image='/images/hero_img/edomex_hero.png'
+      altImage='Placas y logo del Estado de México'
+    />
+    <Servicios />
+    <Nosotros />
+    <Contacto />
+    <PreguntasFrecuentes>
+      <Pregunta 
+        pregunta='¿Cuánto tiempo tardan en completar mis trámites?'
+        respuesta='El tiempo que demora en tener el trámite listo es de 5 a 10 días habiles desde que entrega los requisitos, el tiempo puede variar dependiendo del tipo de trámite que quiera realizar.'
+      />
+      <Pregunta 
+        pregunta='¿Cuáles son los documentos necesarios para realizar trámites vehiculares?'
+        respuesta='Los documentos necesarios pueden variar según el tipo de tramite, pero en general, algunos documentos comunes incluyen:'
+        requisitos={[
+          "Identificación oficial del propietario",
+          "Comprobante de domicilio",
+          "Factura original del vehiculo",
+          "Comprobante de pago de tenencia y verificación"
+        ]}
+      />
+      <Pregunta
+        pregunta='¿Es necesario contratar un servicio de gestión vehicular o puedo realizar los trámites por mi cuenta?'
+        respuesta='La posibilidad de realizar los trámites por cuenta propia depende de la complejidad de ls procedimientos y de la familiaridad del solicitante con la normativa vigente. Sin embargo, contratar nuestros servicios puede ofrecer ventajas como:'
+        requisitos={[
+          "Ahorro de tiempo y esfuerzo",
+          "Evitar errores que puede retrasar el proceso del trámite",
+          "Acceso a la experiencia y conocimiento de expertos en gestión vehicular",
+          "Seguimiento y actualización sobre cambios en regulaciones y requisitos"
+        ]}
+      />
+    </PreguntasFrecuentes>
+  </main>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  subtitleStrong: string;
+  image: string;
+  altImage: string
+}
+
+const { title, subtitle, subtitleStrong, image, altImage } = Astro.props;
+---
+
+<section class="bg-gradient-to-b from-[#112D4E] to-[#19477C] min-h-screen mb-20">
+  <div class="container-jc mx-auto py-10 min-h-[80vh] px-3">
+    <div class="flex flex-col lg:flex-row-reverse items-center justify-between py-10">
+      <div class="flex-1 px-3 mt-10">
+        <Image src={image} alt={altImage} class='mx-auto w-full max-w-[700px] h-auto' width={700} height={450} loading='eager'/>
+      </div>
+
+      <div class="flex-1 mt-10">
+        <h1 class="text-white font-bold text-3xl md:text-5xl ">{title}</h1>
+        <p class="text-white text-xl my-6">{subtitle} <strong>{subtitleStrong}</strong></p>
+
+        <div class="flex items-center justify-start max-md:flex-col gap-4 *:text-center">
+          <a href="https://wa.me/525549963965?text=Hola!%20Me%20gustaia%20obtener%20informacion%20sobre%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="bg-yellow-500 text-xl px-6 py-2 rounded-md hover:bg-yellow-600 transition max-md:w-full">Contactanos</a>
+          <a href="https://maps.app.goo.gl/FBKCGSdBJtryZo7b6" target="_blank" rel="noopener noreferrer" class="bg-transparent text-white text-xl px-6 py-2 border rounded-md hover:text-black hover:bg-white transition max-md:w-full">Ver en Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <slot>
+    <div class="text-center py-6 min-h-[20vh] bg-white px-3">
+      <h2 class="text-3xl md:text-5xl font-bold text-zinc-900 mb-4">Encuentra la solución que buscas</h2>
+      <a href="#servicios" class="text-5xl text-zinc-600 animate-bounce inline-block" aria-label="Ver servicios"><i class="bi bi-chevron-double-down"></i></a>
+    </div>
+  </slot>
+</section>

@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SeoBasico from '../components/parts/SeoBasico.astro';
+import Hero from '../sections/Hero.astro';
+import Servicios from '../sections/Servicios.astro';
+import Nosotros from '../sections/Nosotros.astro';
+import Contacto from '../sections/Contacto.astro';
+import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
+import Pregunta from '../components/Pregunta.astro';
+
+const currentUrl = Astro.url.href;
+---
+
+<Layout title='Gestoría Vehicular para la Ciudad de México' almoadilla={ true }>
+  <SeoBasico
+    slot='seo'
+    description='Gestoría Vehicular para la Ciudad de México. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
+    keywords='tramites vehiculares cdmx, verificacion vehicular cdmx, placas cdmx, gestor de placas cdmx, placas para motos cdmx, altas vehiculares cdmx, gestoria vehicular cdmx'
+    ogUrl={ currentUrl }
+    ogTitle='Servicios de Gestoría vehicular para la Ciudad de México.'
+    ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
+  >
+    <meta property="og:image" content={currentUrl + "images/placas/cdmx_placas.png"}>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Placas de la Ciudad de México">
+  </SeoBasico>
+  <main>
+    <Hero
+      title='Gestoría vehicular para Ciudad de México'
+      subtitle='Te facilitamos y guiamos en los trámites vehiculares para la'
+      subtitleStrong='Ciudad de México'
+      image='/images/hero_img/cdmx_hero.png'
+      altImage='Placas y logo de la Ciudad de México'
+    />
+    <Servicios />
+    <Nosotros />
+    <Contacto />
+    <PreguntasFrecuentes>
+      <Pregunta 
+        pregunta='¿Cuánto tiempo tardan en completar mis trámites?'
+        respuesta='El tiempo que demora en tener el trámite listo es de 5 a 10 días habiles desde que entrega los requisitos, el tiempo puede variar dependiendo del tipo de trámite que quiera realizar.'
+      />
+      <Pregunta 
+        pregunta='¿Cuáles son los documentos necesarios para realizar trámites vehiculares?'
+        respuesta='Los documentos necesarios pueden variar según el tipo de tramite, pero en general, algunos documentos comunes incluyen:'
+        requisitos={[
+          "Identificación oficial del propietario",
+          "Comprobante de domicilio",
+          "Factura original del vehiculo",
+          "Comprobante de pago de tenencia y verificación"
+        ]}
+      />
+    </PreguntasFrecuentes>
+  </main>
+</Layout>

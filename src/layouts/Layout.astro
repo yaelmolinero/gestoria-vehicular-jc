@@ -1,0 +1,50 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	almoadilla: boolean;
+}
+
+const { title, almoadilla } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<slot name="seo" />
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	</head>
+	<body>
+		<Nav almuadilla={ almoadilla }/>
+		<slot />
+		<Footer />
+	</body>
+</html>
+<style is:global>
+	.container-jc { width: 100%; }
+
+	@media (width >= 576px) {
+		.container-jc { width: 540px; }
+	}
+	@media (width >= 768px) {
+		.container-jc { width: 720px; }
+	}
+	@media (width >= 992px) {
+		.container-jc { width: 960px; }
+	}
+	@media (width >= 1200px) {
+		.container-jc { width: 1140px; }
+	}
+	@media (width >= 1400px) {
+		.container-jc { width: 1320px; }
+	}
+</style>

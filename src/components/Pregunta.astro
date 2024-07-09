@@ -1,0 +1,22 @@
+---
+interface Props {
+  pregunta: string
+  respuesta: string;
+  requisitos?: Array<string>;
+}
+
+const { pregunta, respuesta, requisitos } = Astro.props;
+---
+
+<details class="border-b group" name="pregunta">
+  <summary class="flex justify-between px-6 py-4 transition-colors hover:cursor-pointer group-open:bg-blue-200 focus:ring-4 focus:ring-inset focus:ring-blue-200">
+    {pregunta}
+    <i class="bi bi-chevron-down group-open:rotate-180 transition-transform duration-500"></i>
+  </summary>
+  <div class="px-6 py-4 group-open:block transition duration-1000">
+    <p class="mb-4">{ respuesta }</p>
+    {
+      requisitos && <ul class="list-disc pl-10">{ requisitos.map(req => <li>{req}</li>) }</ul>
+    }
+  </div>
+</details>

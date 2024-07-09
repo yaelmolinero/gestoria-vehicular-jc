@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SeoBasico from '../components/parts/SeoBasico.astro';
+import Hero from '../sections/Hero.astro';
+import Servicios from '../sections/Servicios.astro';
+import Nosotros from '../sections/Nosotros.astro';
+import Contacto from '../sections/Contacto.astro';
+import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
+import Pregunta from '../components/Pregunta.astro';
+
+const currentUrl = Astro.url.href;
+---
+
+<Layout title='Gestoría Vehicular para Guerrero' almoadilla={ true }>
+  <SeoBasico
+    slot='seo'
+    description='Gestoría Vehicular Guerrero. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
+    keywords='tramites vehiculares guerrero, verificacion vehicular guerrero, placas guerrero, gestor de placas guerrero, placas para motos guerrero, altas vehiculares guerrero, gestoria vehicular guerrero'
+    ogUrl={ currentUrl }
+    ogTitle='Servicios de Gestoría vehicular Guerrero.'
+    ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
+  >
+    <meta property="og:image" content={currentUrl + "images/placas/guerrero_placas.png"}>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Placas del estado de Guerrero">
+  </SeoBasico>
+  <main>
+    <Hero
+      title='Gestoría vehicular para Guerrero'
+      subtitle='Te facilitamos y guiamos en los trámites vehiculares para el estado de'
+      subtitleStrong='Guerrero'
+      image='/images/hero_img/guerrero_hero.png'
+      altImage='Placas y logo del estado de Guerrero'
+    />
+    <Servicios />
+    <Nosotros />
+    <Contacto />
+    <PreguntasFrecuentes>
+      <Pregunta 
+        pregunta='¿Cuánto tiempo tardan en completar mis trámites?'
+        respuesta='El tiempo que demora en tener el trámite listo es de 5 a 10 días habiles desde que entrega los requisitos, el tiempo puede variar dependiendo del tipo de trámite que quiera realizar.'
+      />
+      <Pregunta 
+        pregunta='¿Cuáles son los documentos necesarios para realizar trámites vehiculares?'
+        respuesta='Los documentos necesarios pueden variar según el tipo de tramite, pero en general, algunos documentos comunes incluyen:'
+        requisitos={[
+          "Identificación oficial del propietario",
+          "Comprobante de domicilio",
+          "Factura original del vehiculo",
+          "Comprobante de pago de tenencia y verificación"
+        ]}
+      />
+    </PreguntasFrecuentes>
+  </main>
+</Layout>

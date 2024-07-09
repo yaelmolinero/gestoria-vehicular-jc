@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SeoBasico from '../components/parts/SeoBasico.astro';
+import { Image } from "astro:assets";
+---
+<SeoBasico
+  description="Conoce más sobre nosotros, nuestra trayectoria, misión, visión y valores."
+  keywords="Gestoria Vehicular JC nosotros"
+  ogUrl="https://gestoriavehicularjc.com/nosotros"
+  ogTitle="Nosotros | Gestoría Vehicular JC"
+  ogDescription="Conoce más sobre nosotros, nuestra trayectoria, misión, visión y valores."
+/>
+<Layout title="Nosotros | Gestoría Vehicular JC" almoadilla={ false }>
+  <main>
+    <div class="bg-gradient-to-b from-[#112D4E] to-[#19477C] pt-[100px] pb-[50px] mb-12">
+      <div class="w-full lg:w-2/3 xl:w-1/2 px-3 text-center text-white mx-auto">
+        <h1 class="text-5xl font-bold mb-6">Sobre nosotros</h1>
+        <p class="text-xl mb-6">Somos expertos en la gestoría vehicular ubicados cerca del centro de Tlalnepantla, Estado de México, nos caracterizamos por la eficiencia en nuestro trabajo con más de 10 años de experiencia. Ofrecemos trámites para Estado de México, Ciudad de México, Morelos, Guerrero y Chiapas.</p>
+        <div class="px-4">
+          <Image src="https://images.unsplash.com/photo-1551830820-330a71b99659?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm9yZCUyMGYxNTB8ZW58MHx8MHx8fDA%3D" alt="Camioneta azul" width={700} height={300} class="max-w-2xl rounded-md shadow-lg mx-auto" loading="eager"/>
+        </div>
+      </div>
+    </div>
+    <div class="w-full lg:w-2/3 xl:w-1/2 px-3 text-center *:mb-4 [&>p]:text-xl mx-auto my-12">
+      <p><strong>Somos un negocio dedicado a la gestion vehicular con más de 10 años de experiencia.</strong></p>
+      <p>Nos caracterizamos por la eficiencia y confiabilidad en nuestro trabajo, ya que lo más importante para nosotros es que puedas obtener tus documentos de manera ágil y sencilla.</p>
+      <p>En un entorno donde la complejidad de los trámites puede ser abrumadora, ofrecemos el servicio para guiar a nuestros clientes a través de los procesos, asegurándonos de que cada paso se lleve a cabo de manera correcta y oportuna.</p>
+      <p>Si busca un socio confiable y con experiencia para gestionar los trámites vehiculares de manera eficiente y sin complicaciones, confíe en nosotros. En nuestra gestoría, la paciencia y el compromiso se combinan para ofrecer un servicio excepcional que simplifica su vida en el mundo de los vehículos.</p>
+      <h2 class="text-3xl font-bold">Misión</h2>
+      <p>Facilitar y optimizar la experiencia vehicular simplificando los trámites administrativos, brindando soluciones eficientes que permitan a nuestros clientes dedicar más tiempo a disfrutar de sus vehículos y menos a preocuparse por trámites complicados.</p>
+      <h2 class="text-3xl font-bold">Visión</h2>
+      <p>Ser la gestoría líder de confianza, reconocida por la excelencia en la presentación de servicios. Aspiramos a expandir nuestra presencia y mantenernos a la vanguardia de las tendencias del sector, consolidándonos como referente en la gestion vehicular.</p>
+      <h2 class="text-3xl font-bold">Valores</h2>
+      <ul class="list-disc">
+        <li>Compromiso</li>
+        <li>Transparencia</li>
+        <li>Eficiencia</li>
+        <li>Servicio al cliente</li>
+        <li>Respeto</li>
+      </ul>
+    </div>
+  </main>
+</Layout>

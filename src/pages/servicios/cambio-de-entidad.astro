@@ -1,0 +1,42 @@
+---
+import Servicio from "../../layouts/Servicio.astro";
+import SeoBasico from "../../components/parts/SeoBasico.astro";
+import PreguntasFrecuentes from "../../sections/PreguntasFrecuentes.astro";
+import Pregunta from '../../components/Pregunta.astro';
+
+const currentUrl = Astro.url.href;
+---
+
+<SeoBasico
+  description="Si vas a vivir a otro estado o compras un auto de otro estado deberás cumplir algunos requisitos para poner tu auto al corriente."
+  keywords="cambio de entidad a ciudad de mexico, cambio de entidad, como cambiar la entidad mi auto si es de otro estado"
+  ogUrl={ currentUrl }
+  ogTitle="Cambio de Entidad | Gestoría Vehicular JC"
+  ogDescription="Si vas a vivir a otro estado o compras un auto de otro estado deberás cumplir algunos requisitos para poner tu auto al corriente."
+/>
+<Servicio
+  title="Cambio de Entidad | Gestoría Vehicular JC"
+  nombre="Cambio de Entidad"
+  descripcion="Si vas a vivir a otro estado o compras un auto de otro estado deberás cumplir algunos requisitos para poner tu auto al corriente."
+  iconClass="bi-arrow-repeat"
+>
+  <p>Para estar en orden con los trámites de control vehicular y obligaciones tributarias, si te cambias de estado, deberas hacer la baja del estado que abandonas y hacer la alta correspondiente en el estado al que vas, por ejemplo, si abandonas la CDMX tendras que hacer la baja vehicular en CDMX y hacer la alta en el estado correspondiente, o visceversa. Conoce como hacer la <a href="/servicios/altas-y-bajas" target="_blank" rel="noopener noreferrer">alta y baja</a> (segun sea el caso).</p>
+  <p>Si deseas <strong>comprar un auto con placas de otro estado</strong> puedes hacerlo, pero ten en cuenta que primero tienes que hacer el cambio de entidad y despues el cambio de propietario. Conoce como hacer el <a href="/servicios/cambio-de-propietario" target="_blank" rel="noopener noreferrer">cambio de propietario</a>.</p>
+  <p>Como se menciona anteriormente, son dos trámites diferentes y cada uno en diferente estado, es algo que con solo pensarlo resulta tedioso, para hacerlo fácil ofrecemos el servicio de cambio de entidad para <strong>hacer los trámites en uno solo</strong>.</p>
+
+  <h2>Requisitos</h2>
+
+  <ul>
+    <li><strong>Identificaión Oficial.</strong> Puede ser IFE o INE, pasaporte, licencia de conducir.</li>
+    <li><strong>Factura Original del Vehiculo.</strong> Debe tener los datos del vehiculo (número de serie, modelo, clave vehicualr, fecha de operación).</li>
+    <li><strong>Comprobante de Domicilio.</strong> Puede ser recibo de luz o agua, predial, constancia domiciliaria, entre otros.</li>
+    <li><strong>Tarjeta de Circulación y Placas.</strong></li>
+  </ul>
+
+  <PreguntasFrecuentes slot="preguntas-frecuentes">
+    <Pregunta
+      pregunta="¿Qué pasa si no hago la baja de placas en mi antiguo estado de residencia?"
+      respuesta="Si no haces este trámite, no podras hacer el alta de placas en tu nuevo estado de residencia, puesto que para dar de alta tus nuevas placas deberás presentar un comprobante que acredite que diste de baja las placas en tu antiguo estado de residencia."
+    />
+  </PreguntasFrecuentes>
+</Servicio>
