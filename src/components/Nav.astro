@@ -15,7 +15,7 @@ const pasarAlmuadilla = Astro.props.almuadilla ? "#" : "/";
       Gestoría Vehicular JC
     </a>
 
-    <button class="block md:hidden border border-neutral-400 rounded-md py-1 px-4 text-xl text-neutral-400" data-toggle="#offcanvas"><i class="bi bi-list w-6"></i></button>
+    <button class="block md:hidden border border-neutral-400 rounded-md py-1 px-4 text-xl text-neutral-400" data-toggle="#offcanvas" aria-label="Abrir navbar"><i class="bi bi-list w-6"></i></button>
 
     <div class="bg-white md:bg-inherit max-md:fixed max-md:top-0 max-md:bottom-0 max-md:left-0 max-md:w-4/5 max-md:-translate-x-[100vw] max-md:-z-10 block transition max-sm:w-full" id="offcanvas">
       <div class="p-4 flex md:hidden items-center justify-between text-black border-b">
@@ -23,7 +23,7 @@ const pasarAlmuadilla = Astro.props.almuadilla ? "#" : "/";
           <i class="bi bi-folder"></i>
           Gestoría Vehicular JC
         </h5>
-        <button class="text-lg" id="cerrar-offcanvas"><i class="bi bi-x-lg"></i></button>
+        <button class="text-lg" id="cerrar-offcanvas" aria-label="Cerrar navbar"><i class="bi bi-x-lg"></i></button>
       </div>
 
       <div class="max-md:p-4">
