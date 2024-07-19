@@ -9,7 +9,6 @@ import Contacto from '../sections/Contacto.astro';
 import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
 import Pregunta from '../components/Pregunta.astro';
 
-const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const seoImage = new URL('/images/placas/cdmx_placas.png', Astro.url);
 ---
 
@@ -18,14 +17,12 @@ const seoImage = new URL('/images/placas/cdmx_placas.png', Astro.url);
 		slot='seo'
 		description='Gestoría vehicular para la Ciudad de Mexico, Estado de México, Morelos, Guerrero y Chiapas desde el Estado de México'
 		keywords='gestoria vehicular, placas, tramites vehicualres, reemplacamiento, gestor de placas, placas para carros placas para motos, verificacion vehicular, altas y bajas vehiculares, gestoria vehicular jc'
-		ogUrl={ currentUrl }
 		ogTitle='Servicos de Gestoría Vehicular para CDMX, EDOMEX, Morelos, Guerrero y Chiapas'
 		ogDescription='Una gestoría eficiente y de confianza donde te podemos ayudar con tus tramites vehiculares como Altas y Bajas, Cambio de Entidad, Cambios de Propietario, Placas Federales, entre otros.'
 	>
 		<meta property="og:image" content={ seoImage }>
 		<meta property="og:image:type" content="image/png">
 		<meta property="og:image:alt" content="Personas trabajando en equipo">
-		<link rel="canonical" href={ currentUrl }>
 	</SeoBasico>
 	<main>
 		<Hero

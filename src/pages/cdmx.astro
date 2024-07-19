@@ -8,7 +8,7 @@ import Contacto from '../sections/Contacto.astro';
 import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
 import Pregunta from '../components/Pregunta.astro';
 
-const currentUrl = Astro.url.href;
+const seoImage = new URL('/images/placas/cdmx_placas.png', Astro.url);
 ---
 
 <Layout title='Gestoría Vehicular para la Ciudad de México' almoadilla={ true }>
@@ -16,11 +16,10 @@ const currentUrl = Astro.url.href;
     slot='seo'
     description='Gestoría Vehicular para la Ciudad de México. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
     keywords='tramites vehiculares cdmx, verificacion vehicular cdmx, placas cdmx, gestor de placas cdmx, placas para motos cdmx, altas vehiculares cdmx, gestoria vehicular cdmx'
-    ogUrl={ currentUrl }
     ogTitle='Servicios de Gestoría vehicular para la Ciudad de México.'
     ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
   >
-    <meta property="og:image" content={currentUrl + "images/placas/cdmx_placas.png"}>
+    <meta property="og:image" content={ seoImage }>
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="Placas de la Ciudad de México">
   </SeoBasico>

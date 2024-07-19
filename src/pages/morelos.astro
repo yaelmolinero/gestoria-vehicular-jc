@@ -8,19 +8,18 @@ import Contacto from '../sections/Contacto.astro';
 import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
 import Pregunta from '../components/Pregunta.astro';
 
-const currentUrl = Astro.url.href;
+const seoImage = new URL('/images/placas/cdmx_placas.png', Astro.url);
 ---
 
 <Layout title='Gestoría Vehicular para Morelos' almoadilla={ true }>
   <SeoBasico
     slot='seo'
     description='Gestoría Vehicular para Morelos. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
-    keywords='tramites vehiculares morelos, verificacion vehicular morelos, placas morelos, gestor de placas morelos, placas para motos morelos, altas vehiculares morelos, gestoria vehicular morelos'
-    ogUrl={ currentUrl }
+    keywords='tramites vehiculares morelos, verificacion vehicular morelos, placas morelos, gestoría placas morelos, placas para motos morelos, altas vehiculares morelos, gestoria vehicular morelos, gestoria refrendo morelos'
     ogTitle='Servicios de Gestoría vehicular Morelos.'
     ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
   >
-    <meta property="og:image" content={currentUrl + "images/placas/morelos_placas.png"}>
+    <meta property="og:image" content={ seoImage }>
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="Placas del estado de Morelos">
   </SeoBasico>

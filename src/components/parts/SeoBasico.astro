@@ -2,18 +2,19 @@
 interface Props {
   description: string;
   keywords: string;
-  ogUrl: string;
   ogTitle: string;
   ogDescription: string;
 }
 
-const { description, keywords, ogUrl, ogTitle, ogDescription } = Astro.props;
+const { description, keywords, ogTitle, ogDescription } = Astro.props;
+const currentUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <meta name="description" content={ description }>
 <meta name="keywords" content={ keywords }>
+<link rel="canonical" href={ currentUrl }>
 
-<meta property="og:url" content={ ogUrl }>
+<meta property="og:url" content={ currentUrl }>
 <meta property="og:title" content={ ogTitle }>
 <meta property="og:description" content={ ogDescription }>
 <meta property="og:type" content="website">

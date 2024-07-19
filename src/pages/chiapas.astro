@@ -8,7 +8,7 @@ import Contacto from '../sections/Contacto.astro';
 import PreguntasFrecuentes from '../sections/PreguntasFrecuentes.astro';
 import Pregunta from '../components/Pregunta.astro';
 
-const currentUrl = Astro.url.href;
+const seoImage = new URL('/images/placas/cdmx_placas.png', Astro.url);
 ---
 
 <Layout title='Gestoría Vehicular para Chiapas' almoadilla={ true }>
@@ -16,11 +16,10 @@ const currentUrl = Astro.url.href;
     slot='seo'
     description='Gestoría Vehicular para Chiapas. Facilitamos tus trámites vehiculares con nuestros servicios, obtén placas, verificación u otros con rapidez y eficacia.'
     keywords='tramites vehiculares chiapas, verificacion vehicular chiapas, placas chiapas, gestor de placas chiapas, placas para motos chiapas, altas vehiculares chiapas, gestoria vehicular chiapas'
-    ogUrl={ currentUrl }
     ogTitle='Servicios de Gestoría vehicular para Chiapas.'
     ogDescription='Te facilitamos tus tramites vehiculares con nuestra gestoría, obten placas, verificación, altas u otros. ¡Confía en nosotros para una gestion vehicular sin complicaciones!'
   >
-    <meta property="og:image" content={currentUrl + "images/placas/chiapas_placas.png"}>
+    <meta property="og:image" content={ seoImage }>
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="Placas del estado de Chiapas">
   </SeoBasico>
